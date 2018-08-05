@@ -14,6 +14,7 @@ import { RemoteAPIModule } from '@app/shared/services/remote-api/remote-api.modu
 import { AuthInterceptor } from '@app/shared/services/auth-interceptor.service';
 import { AuthEffects } from '@app/shared/effects/auth';
 import { ProductEffects } from '@app/shared/effects/product';
+import { UtilsModule } from '@app/shared/services/utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ProductEffects } from '@app/shared/effects/product';
     ]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     RemoteAPIModule.forRoot(),
+    UtilsModule.forRoot()
   ],
   providers: [
     {

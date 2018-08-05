@@ -17,18 +17,20 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if ( !localStorage.getItem('accessToken') ) {
-      this.store.dispatch(new authAction.Auth());
-      console.log(`-------> get access token ${Date.now()}`);
-    } 
 
-    if (localStorage.getItem('accessToken')) {
-      this.initProducts();
-    }
+    //test
+    this.store.select(s => s.auth)
+        .pipe(
+            filter(_ => !!_.hasAccessToken)
+        )
+        .subscribe(authState => {
+            console.log(authState);
+            this.initProducts();
+        })
     
   }
 
-  //test fetching products
+
   initProducts() {
     this.store.dispatch(new productAction.Load());
 

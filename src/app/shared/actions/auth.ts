@@ -4,7 +4,9 @@ import { AccessToken } from '@app/shared/models/access-token';
 export enum AuthActionTypes {
   Auth = '[AccessToken] Auth',
   AuthSuccess = '[AccessToken] Auth Success',
-  AuthFailure = '[AccessToken] Auth Failure'
+  AuthFailure = '[AccessToken] Auth Failure',
+  SetAccessToken = '[AccessToken] Set',
+  RemoveAccessToken = '[AccessToken] Remove'
 }
 
 export class Auth implements Action {
@@ -23,7 +25,17 @@ export class AuthFailure implements Action {
   constructor(public payload: any) {}
 }
 
+export class SetAccessToken implements Action {
+  readonly type = AuthActionTypes.SetAccessToken;
+}
+
+export class RemoveAccessToken implements Action {
+  readonly type = AuthActionTypes.RemoveAccessToken;
+}
+
 export type AuthActions =
   Auth
   | AuthSuccess
-  | AuthFailure;
+  | AuthFailure
+  | SetAccessToken
+  | RemoveAccessToken;

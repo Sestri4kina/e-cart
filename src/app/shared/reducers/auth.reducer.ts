@@ -1,13 +1,15 @@
 import { AuthActions, AuthActionTypes } from "@app/shared/actions/auth";
 
 export interface State {
-  error: string | null;
+  error: string;
   isLoading: boolean;
+  hasAccessToken: boolean;
 }
 
 export const initialState: State = {
   error: null,
-  isLoading: false
+  isLoading: false,
+  hasAccessToken: false
 };
 
 export function reducer(state = initialState, action: AuthActions): State {
@@ -27,6 +29,7 @@ export function reducer(state = initialState, action: AuthActions): State {
         ...state,
         error: null,
         isLoading: false,
+        hasAccessToken: true
       };
     }
 
@@ -38,6 +41,22 @@ export function reducer(state = initialState, action: AuthActions): State {
       };
     }
 
+    case AuthActionTypes.SetAccessToken: {      
+      return {
+        ...state,
+        hasAccessToken: true
+      };
+    }
+
+    case AuthActionTypes.RemoveAccessToken: {
+      localStorage.removeItem('accessToken');
+      
+      return {
+        ...state,
+        hasAccessToken: false
+      };
+    }
+
     default: {
       return state;
     }
@@ -45,3 +64,4 @@ export function reducer(state = initialState, action: AuthActions): State {
 }
 
 export const getError = (state: State) => state.error;
+export const hasAccessToken = (state: State) => state.hasAccessToken;
