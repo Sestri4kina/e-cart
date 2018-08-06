@@ -5,19 +5,20 @@ import * as fromRoot from '@app/shared/reducers';
 import * as authAction from '@app/shared/actions/auth';
 import * as productAction from '@app/shared/actions/product';
 import { filter } from "rxjs/operators";
+import { Product, Products } from '@app/shared/models/product';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
+  products: Array<Product>;
 
   constructor ( 
     private store: Store<fromRoot.State>
   ) {}
 
   ngOnInit() {
-
     //test
     this.store.select(s => s.auth)
         .pipe(
@@ -27,7 +28,6 @@ export class AppComponent implements OnInit {
             console.log(authState);
             this.initProducts();
         })
-    
   }
 
 
@@ -38,8 +38,9 @@ export class AppComponent implements OnInit {
       .pipe(
         filter(_ => !!_.products)
       )
-      .subscribe(data => {
-        console.log(data);
+      .subscribe((productsData) => {
+        console.log(productsData);
+        this.products = productsData.products.data;
       });
   }
 

@@ -1,2 +1,7 @@
 <h1>e-cart</h1>
+<div *ngIf="products">
+    <ul *ngFor="let product of products">
+        <li>Product: {{ product.name }}</li>
+    </ul>
+</div>
 <router-outlet></router-outlet>

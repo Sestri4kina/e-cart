@@ -9,7 +9,7 @@ export class HandleTokenService {
 
         tokenIsValid() {
             if (this.getToken()) {
-                return this.getToken().expires < Date.now();
+                return this.getToken().expires * 1000 > Date.now();
             }
             return false;
         }
