@@ -1,0 +1,88 @@
+.header-nav {
+    @extend .float-r;
+    &-item {
+        position: relative;
+        @include font-size($header-nav-item-font-size);
+        @include line-height($header-nav-item-line-height);
+        @include padding-horizontal($header-nav-item-padding-horizontal);
+        @include padding-vertical($header-nav-item-padding-vertical);
+        @extend .d-none;
+        @extend .md-d-inline-block;
+        &:hover {
+            text-decoration: $header-nav-item-hover-text-decoration;
+        }
+    }
+
+    &-account {
+        position: relative;
+        //height: 36px;
+        margin-top: 0;
+        @include padding-vertical($header-nav-account-padding-vertical);
+        @include padding-horizontal($header-nav-item-padding-horizontal);
+        @extend .d-none;
+        @extend .md-d-inline-block;
+        &:hover {
+            text-decoration: $header-nav-item-hover-text-decoration;
+        }
+        &-img {
+            width: auto;
+            height: 20px;
+            display: block;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            background-image: url("/assets/images/icons/account/account.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center; 
+            &.active {
+                background-image: url("/assets/images/icons/account/account_active.svg");
+            }
+            &:hover {
+                background-image: url("/assets/images/icons/account/account_active.svg");
+            }
+        }
+
+        &-text {
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include font-size($header-nav-account-font-size);
+            @include line-height($header-nav-account-line-height);
+            &.active {
+                color: $header-nav-item-active-color;
+                font-weight: bold;
+            }
+            &:hover {
+                color: $header-nav-item-active-color;
+                font-weight: bold;
+                text-decoration: $header-nav-item-hover-text-decoration; 
+            }
+        }
+    }
+    
+    &--mobile {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        background: $header-nav-item-mobile-bg;
+        z-index: 1;
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        @extend .md-d-none;
+        .header-nav-item {
+            @extend .d-block;
+        }
+        &.show {
+            transform: translateX(0);
+        }
+    }
+}
+
+.burger-button {
+    @extend .float-r;
+    @extend .md-d-none;
+    @include padding-vertical($burger-padding-top-bottom);
+}

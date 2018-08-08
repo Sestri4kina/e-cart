@@ -1,0 +1,39 @@
+.btn {
+    &.btn-primary {
+        background-color: $btn-primary-default-bg;
+        color: $btn-primary-text-color;
+        text-transform: uppercase;
+        &:hover,
+        &.btn-hover {
+            background-color: $btn-primary-hover-bg;
+        }
+        &:focus,
+        &.btn-focus {
+            background-color: $btn-primary-pressed-bg;
+        }
+        &:active,
+        &.btn-active {
+            background-color: $btn-primary-pressed-bg;
+        }
+        &-inverse {
+            text-transform: uppercase;
+            background-color: transparent;
+            color: $btn-primary-inverse-color;
+            &:hover,
+            &.btn-hover {
+                background-color: $btn-primary-inverse-hover-bg;
+                color: $btn-primary-inverse-color;
+            }
+            &:focus,
+            &.btn-focus {
+                background-color: $btn-primary-inverse-hover-bg;
+                color: $btn-primary-inverse-color;
+            }
+            &:active,
+            &.btn-active {
+                background-color: $btn-primary-inverse-hover-bg;
+                color: $btn-primary-inverse-color;
+            }
+        }
+    }
+}

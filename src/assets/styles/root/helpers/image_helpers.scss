@@ -1,0 +1,20 @@
+.img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-center {
+    display: block;
+    margin: auto;
+}
+
+.wrapper {
+    @extend .d-none;
+    @extend .md-d-inline-block;
+    &--mobile {
+        @extend .d-block;
+        @extend .md-d-none;
+    }
+}
+
+

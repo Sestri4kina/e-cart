@@ -1,0 +1,94 @@
+// Dependencies
+
+// Display helpers
+.d-none {display: none;}
+.d-block {display: block;}
+.d-inline-block {display: inline-block;}
+.d-inline {display: inline;}
+.d-inline-flex {display: inline-flex;}
+.d-flex {display: flex;}
+.show {display: block;}
+.hide {display: none;}
+.hidden {visibility: hidden;}
+.p-fixed {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+} 
+
+@include media-size-sm {
+    .sm-d-none {display: none;}
+    .sm-d-block {display: block;}
+    .sm-d-inline-block {display: inline-block;}
+    .sm-d-inline {display: inline;}
+    .sm-show {display: block;}
+    .sm-hide {display: none;}
+    .sm-hidden {visibility: hidden;}
+}
+
+@include media-size-md {
+    .md-d-none {display: none;}
+    .md-d-block {display: block;}
+    .md-d-inline-block {display: inline-block;}
+    .md-d-inline {display: inline;}
+    .md-show {display: block;}
+    .md-hide {display: none;}
+    .md-hidden {visibility: hidden;}
+}
+
+@include media-size-lg {
+    .lg-d-none {display: none;}
+    .lg-d-block {display: block;}
+    .lg-d-inline-block {display: inline-block;}
+    .lg-d-inline {display: inline;}
+    .lg-show {display: block;}
+    .lg-hide {display: none;}
+    .lg-hidden {visibility: hidden;}
+}
+
+@include media-size-xl {
+    .xl-d-none {display: none;}
+    .xl-d-block {display: block;}
+    .xl-d-inline-block {display: inline-block;}
+    .xl-d-inline {display: inline;}
+    .xl-show {display: block;}
+    .xl-hide {display: none;}
+    .xl-hidden {visibility: hidden;}
+  }
+//hide for screens that are smaller than 768px: small and extra-small
+//show for screens bigger than 768px
+//add classes: hide-sm-and-smaller   hide-sm-and-smaller--mobile
+  .hide-sm-and-smaller {
+    @extend .d-none;
+    @extend .sm-d-block;
+    &--mobile {
+        @extend .d-block;
+        @extend .sm-d-none;
+        }
+    }
+//hide for screens that are smaller than 996px: medium, small and extra-small
+//show for screens bigger than 996pxpx
+//add classes: hide-md-and-smaller hide-md-and-smaller--tablet
+    .hide-md-and-smaller {
+        @extend .d-none;
+        @extend .lg-d-block;
+        &--tablet {
+            @extend .d-block;
+            @extend .lg-d-none;
+            }
+        }
+
+    .show-sm-and-smaller {
+        //@extend .d-none;
+        @extend .sm-d-block;
+        @extend .md-d-none;
+    }
+
+    .hide-small {
+        @media screen and (orientation: landscape) and (max-width: 768px),
+            screen and (orientation: portrait) and (max-width: 576px) {
+            display: none;
+        }
+    }
+

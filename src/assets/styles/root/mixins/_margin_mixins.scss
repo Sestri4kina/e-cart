@@ -1,0 +1,44 @@
+/* Set rem margins with pixel fallback */
+@mixin margin-single($margin) {
+    margin: $margin;
+    margin: rem($margin);
+}
+
+@mixin margin($top, $right, $bottom, $left) {
+    margin: $top $right $bottom $left;
+    margin: rem($top) rem($right) rem($bottom) rem($left);
+}
+
+@mixin margin-top($size) {
+    margin-top: $size;
+    margin-top: rem($size);
+}
+
+@mixin margin-right($size) {
+    margin-right: $size;
+    margin-right: rem($size);
+}
+
+@mixin margin-bottom($size) {
+    margin-bottom: $size;
+    margin-bottom: rem($size);
+}
+
+@mixin margin-left($size) {
+    margin-left: $size;
+    margin-left: rem($size);
+}
+
+@mixin margin-vertical($size) {
+    margin-top: $size;
+    margin-top: rem($size);
+    margin-bottom: $size;
+    margin-bottom: rem($size);
+}
+
+@mixin margin-horizontal($size) {
+    margin-left: $size;
+    margin-left: rem($size);
+    margin-right: $size;
+    margin-right: rem($size);
+}

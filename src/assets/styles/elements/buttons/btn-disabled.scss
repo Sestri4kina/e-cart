@@ -1,0 +1,23 @@
+.btn {
+    &.btn-disabled,
+    &[disabled] {
+        background-color: $btn-disabled-default-bg;
+        color: $btn-disabled-text-color;
+        cursor: not-allowed;
+        &:hover,
+        &.btn-hover {
+            background-color: $btn-disabled-hover-bg;
+            color: $btn-disabled-text-color;
+        }
+        &:focus,
+        &.btn-focus {
+            background-color: $btn-disabled-pressed-bg;
+            color: $btn-disabled-text-color;
+        }
+        &:active,
+        &.btn-active {
+            background-color: $btn-disabled-pressed-bg;
+            color: $btn-disabled-text-color;
+        }
+    }
+}

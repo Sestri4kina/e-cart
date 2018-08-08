@@ -1,0 +1,10 @@
+.link {
+    font-weight: normal;
+    color: $link-default-color;
+    &:hover {
+        text-decoration: none;
+    }
+    &:focus {
+        outline: none;
+    }
+}

@@ -1,0 +1,13 @@
+.v-line {
+    border-left: 1px solid map-get($grey, tertiary);
+    height: 24px;
+}
+
+.v-line-auth {
+    border-left: 1px solid map-get($grey, tertiary);
+    height: 422px;
+    margin-right: 50%;
+    margin-left: 50%;
+    margin-top: map-get($marg-paired, lg1);
+    display: block;
+}

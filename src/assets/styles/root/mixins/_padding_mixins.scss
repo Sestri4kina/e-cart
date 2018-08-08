@@ -1,0 +1,44 @@
+/* Set rem paddings with pixel fallback */
+@mixin padding-single($margin) {
+    padding: $margin;
+    padding: rem($margin);
+}
+
+@mixin padding($top, $right, $bottom, $left) {
+    padding: $top $right $bottom $left;
+    padding: rem($top) rem($right) rem($bottom) rem($left)
+}
+
+@mixin padding-top($size) {
+    padding-top: $size;
+    padding-top: rem($size);
+}
+
+@mixin padding-right($size) {
+    padding-right: $size;
+    padding-right: rem($size);
+}
+
+@mixin padding-bottom($size) {
+    padding-bottom: $size;
+    padding-bottom: rem($size);
+}
+
+@mixin padding-left($size) {
+    padding-left: $size;
+    padding-left: rem($size);
+}
+
+@mixin padding-vertical($size) {
+    padding-top: $size;
+    padding-top: rem($size);
+    padding-bottom: $size;
+    padding-bottom: rem($size);
+}
+
+@mixin padding-horizontal($size) {
+    padding-left: $size;
+    padding-left: rem($size);
+    padding-right: $size;
+    padding-right: rem($size);
+}

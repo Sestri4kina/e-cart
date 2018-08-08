@@ -29,7 +29,7 @@ export class AuthEffects {
   init$ = defer(() => {
     if (!this.handleToken.getToken() || (this.handleToken.getToken() && !this.handleToken.tokenIsValid)) {
       return of(new Auth());
-    } else if (this.handleToken.getToken()  && this.handleToken.tokenIsValid) {
+    } else if (this.handleToken.getToken() && this.handleToken.tokenIsValid) {
       return of(new SetAccessToken());
     }
   });

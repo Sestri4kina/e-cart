@@ -1,0 +1,16 @@
+$header-nav-item-font-size: map-get($font-size, body2);
+$header-nav-item-line-height: map-get($line-height, body2);
+$header-nav-account-font-size: map-get($font-size, caption1);
+$header-nav-account-line-height: map-get($line-height, caption1);
+$header-nav-item-padding-horizontal: map-get($pad-independent, xs);
+$header-nav-item-padding-vertical: map-get($pad-paired, sm1);
+$header-nav-account-padding-vertical: map-get($pad-independent, xs);
+$header-nav-item-hover-text-decoration: none;
+$header-nav-item-primary-position-bottom: 0;
+$header-nav-item-primary-position-left: 0;
+$header-nav-item-primary-width: 100%;
+$header-nav-item-primary-border-width: 3px;
+$header-nav-item-primary-border-style: solid;
+
+$burger-padding-top-bottom: map-get($pad-independent, sm2);
+

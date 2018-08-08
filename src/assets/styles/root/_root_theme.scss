@@ -1,0 +1,72 @@
+// Theme colors
+$color-theme: (
+    primary:  orange,
+    secondary: #a5235f,
+    success:   #199752,
+    error:     #f46760,
+    warning:   #ea8c34,
+    dark:      #00151a,
+    disabled:  #f0f0f0,
+    white:     #fff,
+    black:     #000,
+);
+
+// States
+$primary: (
+    default: map-get($color-theme, primary),
+    hover: lighten(map-get($color-theme, primary), 30%),
+    pressed: darken(map-get($color-theme, primary), 15%),
+    text: map-get($color-theme, white)
+);
+
+$secondary: (
+    default: map-get($color-theme, secondary),
+    hover: lighten(map-get($color-theme, secondary), 30%),
+    pressed: darken(map-get($color-theme, secondary), 15%)
+);
+
+$success: (
+    default: map-get($color-theme, success),
+    hover: lighten(map-get($color-theme, success), 30%),
+    pressed: darken(map-get($color-theme, success), 15%)
+);
+
+$warning: (
+    default: map-get($color-theme, warning),
+    hover: lighten(map-get($color-theme, warning), 30%),
+    pressed: darken(map-get($color-theme, warning), 15%)
+);
+
+$error: (
+    default: map-get($color-theme, error),
+    primary: mix(map-get($color-theme, error), map-get($color-theme, white), 3%),
+    hover: lighten(map-get($color-theme, error), 30%),
+    pressed: darken(map-get($color-theme, error), 15%)
+);
+
+$disabled: (
+    default: mix(map-get($color-theme, dark), map-get($color-theme, white), 25%),
+    hover: mix(map-get($color-theme, dark), map-get($color-theme, white), 30%),
+    pressed: mix(map-get($color-theme, dark), map-get($color-theme, white), 30%),
+    text: map-get($color-theme, white)
+);
+
+$grey: (
+    default: map-get($color-theme, dark),
+    primary: mix(map-get($color-theme, dark), map-get($color-theme, white), 3%),
+    secondary: mix(map-get($color-theme, dark), map-get($color-theme, white), 10%),
+    tertiary: mix(map-get($color-theme, dark), map-get($color-theme, white), 25%),
+    quaternary: mix(map-get($color-theme, dark), map-get($color-theme, white), 50%)
+);
+
+$on-white: (
+    primary: map-get($color-theme, dark),
+    secondary: mix(map-get($color-theme, dark), map-get($color-theme, white), 50%),
+    disabled: mix(map-get($color-theme, dark), map-get($color-theme, white), 25%)
+);
+
+$on-dark: (
+    primary: map-get($color-theme, white),
+    secondary: mix(map-get($color-theme, white), map-get($color-theme, dark),  75%),
+    disabled: mix(map-get($color-theme, white), map-get($color-theme, dark), 50%)
+);

@@ -1,0 +1,75 @@
+.btn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-style: solid;
+    border-width: 0;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 300ms ease-out;
+    color: $default-btn-color;
+    background-color: transparent;
+    text-transform: none;
+    font-weight: $default-btn-font-weight;
+    padding-top: $default-btn-padding-top-bottom;
+    padding-bottom: $default-btn-padding-top-bottom;
+    @include font-size($default-btn-font-size);
+    @include line-height($default-btn-line-height);
+    border-radius: $default-btn-border-radius;
+   .btn-plus {
+        background-image: url("/assets/images/icons/more_less/more_less_svg/ic_plus.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: $btn-plus-minus-bg-color !important;
+        width: 32px;
+        height: 32px;
+        .disabled {
+            background-image: url("/assets/images/icons/more_less/more_less_svg/ic_plus_disabled.svg");
+        }
+        &:focus, &:hover {
+            background-image: url("/assets/images/icons/more_less/more_less_svg/ic_plus_pressed.svg");
+        }
+   }
+   .btn-minus {
+        background-image: url("/assets/images/icons/more_less/more_less_svg/ic_minus.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: $btn-plus-minus-bg-color !important;
+        width: 32px;
+        height: 32px;
+        .btn-minus-disabled {
+            background-image: url("/assets/images/icons/more_less/more_less_svg/ic_minus_disabled.svg");
+        }
+        &:focus, &:hover {
+            background-image: url("/assets/images/icons/more_less/more_less_svg/ic_minus_pressed.svg");
+        }
+   }
+    &:hover {
+        text-decoration: none;
+    }
+    &:focus {
+        outline: none;
+    }
+    &.btn-sm {
+        @include font-size($sm-btn-font-size);
+        @include line-height($sm-btn-line-height);
+        @include padding-vertical($sm-btn-padding-top-bottom);
+        @include padding-horizontal($sm-btn-padding-left-right);
+    }
+    &.btn-md {
+        @include font-size($md-btn-font-size);
+        @include line-height($md-btn-line-height);
+        @include padding-vertical($md-btn-padding-top-bottom);
+        padding-left: $md-btn-padding-left-right;
+        padding-right: $md-btn-padding-left-right;
+    }
+    &.btn-lg {
+        letter-spacing: 1px;
+        @include font-size($lg-btn-font-size);
+        @include line-height($lg-btn-line-height);
+        @include padding-vertical($lg-btn-padding-top-bottom);
+        @include padding-horizontal($lg-btn-padding-left-right);
+    }
+}

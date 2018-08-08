@@ -1,7 +1,11 @@
-<h1>e-cart</h1>
-<div *ngIf="products">
-    <ul *ngFor="let product of products">
-        <li>Product: {{ product.name }}</li>
-    </ul>
+<div class="app-wrapper">
+    <div class="app-content">
+        <app-header></app-header>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <div class="app-footer">
+        <app-footer></app-footer>
+    </div>
 </div>
-<router-outlet></router-outlet>

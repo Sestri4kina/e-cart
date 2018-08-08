@@ -1,0 +1,19 @@
+// list of helper classes for contextual backgrounds
+@each $name, $color in $color-theme {
+    .bg-theme-#{$name} {
+        background-color: $color;
+    }
+}
+
+.bg-black {
+    background-color: #000;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.bg-light-grey {
+    background-color: map-get($grey, primary);
+}
+

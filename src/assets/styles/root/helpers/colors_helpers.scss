@@ -1,0 +1,44 @@
+// Dependencies
+
+// Creation list of helper classes for contextual colors
+@each $name, $color in $color-theme {
+    .с-theme-#{$name} {
+        color: $color;
+    }
+}
+
+.c-black {
+    color: #000;
+}
+
+.c-white {
+    color: #fff;
+}
+
+.c-secondary {
+    color: map-get($color-theme, secondary);
+}
+
+
+.c-error {
+    color: map-get($color-theme, error);
+    text-align: center;
+}
+
+//lightest grey
+.c-grey-primary {
+    color: map-get($grey, primary);
+}
+
+.c-grey-secondary {
+    color: map-get($grey, secondary);
+}
+
+.c-grey-tertiary {
+    color: map-get($grey, tertiary);
+}
+//darkest grey
+.c-grey-quaternary {
+    color: map-get($grey, quaternary);
+}
+

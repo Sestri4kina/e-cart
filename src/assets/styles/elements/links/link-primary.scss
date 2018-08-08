@@ -1,0 +1,8 @@
+.link {
+    &.link-primary {
+        color: $link-primary-color;
+        &-inverse {
+            color: $link-primary-inverse-color;
+        }
+    }
+}

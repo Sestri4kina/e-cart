@@ -1,0 +1,40 @@
+//$btn-primary-default-bg: map-get($primary, default);
+$btn-primary-default-bg: map-get($primary, default);;
+$btn-primary-text-color: map-get($primary, text);
+$btn-primary-hover-bg: map-get($primary, hover);
+$btn-primary-pressed-bg: map-get($primary, pressed);
+
+$btn-disabled-default-bg: map-get($disabled, default);
+$btn-disabled-text-color: map-get($disabled, text);
+$btn-disabled-hover-bg: map-get($disabled, default);
+$btn-disabled-pressed-bg: map-get($disabled, default);
+
+$default-btn-color: map-get($color-theme, white);
+
+// BUTTON PRIMARY INVERSE
+$btn-primary-inverse-color: map-get($color-theme, primary);
+$btn-primary-inverse-bg: map-get($color-theme, white);
+$btn-primary-inverse-hover-bg: map-get($primary, hover-inverse);
+$btn-primary-inverse-hover-color: map-get($color-theme, white);
+$btn-primary-inverse-pressed-bg: map-get($primary, pressed);
+$btn-primary-inverse-pressed-color: map-get($color-theme, white);
+$btn-primary-inverse-active-bg: map-get($color-theme, white);
+$btn-primary-inverse-active-color: map-get($primary, pressed);
+
+//BUTTON ERROR
+$btn-error-default-bg: map-get($error, default);
+$btn-error-text-color: map-get($color-theme, white);
+$btn-error-hover-bg: map-get($error, hover);
+$btn-error-pressed-bg: map-get($error, pressed);
+
+$btn-error-inverse-text-color: map-get($error, default);
+$btn-error-inverse-bg: map-get($color-theme, white);
+$btn-error-inverse-hover-bg: map-get($error, hover);
+$btn-error-inverse-hover-color: map-get($error, default);
+$btn-error-inverse-pressed-bg: map-get($error, hover);
+$btn-error-inverse-pressed-color: map-get($error, default);
+$btn-error-inverse-active-bg: map-get($color-theme, white);
+$btn-error-inverse-active-color: map-get($error, default);
+
+$btn-plus-minus-bg-color: map-get($grey, primary);
+$btn-grey-color: map-get($grey, quaternary);

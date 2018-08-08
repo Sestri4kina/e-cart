@@ -1,0 +1,25 @@
+@import '_typography_theme';
+// States
+.t {
+    &-primary {
+        color: $text-on-white-primary;
+    }
+    &-secondary {
+        color: $text-on-white-secondary;
+    }
+    &-disabled {
+        color: $text-on-white-disabled;
+    }
+}
+
+.t-on-dark {
+    &-primary {
+        color: $text-on-dark-primary;
+    }
+    &-secondary {
+        color: $text-on-dark-secondary;
+    }
+    &-disabled {
+        color: $text-on-dark-disabled;
+    }
+}

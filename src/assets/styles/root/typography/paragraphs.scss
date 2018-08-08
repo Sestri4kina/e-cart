@@ -1,0 +1,18 @@
+p {
+    @include font-size($p-fs);
+    @include line-height($p-lh);
+    @include margin-bottom($p-marg-b);
+    font-weight: $p-fw;
+    &.bold {
+        font-weight: $p-bold-fw;
+    }
+    &.small {
+        @include font-size($p-small-fs);
+        @include line-height($p-small-lh);
+        @include margin-bottom($p-small-marg-b);
+        font-weight: $p-small-fw;
+        &.bold {
+            font-weight: $p-small-bold-fw;
+        }
+    }
+}

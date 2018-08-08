@@ -1,0 +1,447 @@
+// MARGINS
+
+@each $name, $dimension in $marg-independent {
+    .marg-#{$name} {
+        @include margin-single($dimension);
+    }
+    .marg-t-#{$name} {
+        @include margin-top($dimension);
+    }
+    .marg-r-#{$name} {
+        @include margin-right($dimension);
+    }
+    .marg-b-#{$name} {
+        @include margin-bottom($dimension);
+    }
+    .marg-l-#{$name} {
+        @include margin-left($dimension);
+    }
+    .marg-v-#{$name} {
+        @include margin-vertical($dimension);
+    }
+    .marg-h-#{$name} {
+        @include margin-horizontal($dimension);
+    }
+}
+
+@each $name, $dimension in $marg-paired {
+    .marg-v-#{$name} {
+        @include margin-vertical($dimension);
+    }
+    .marg-h-#{$name} {
+        @include margin-horizontal($dimension);
+    }
+}
+
+@include media-size-sm {
+    @each $name, $dimension in $marg-independent {
+        .sm-marg-#{$name} {
+            @include margin-single($dimension);
+        }
+        .sm-marg-t-#{$name} {
+            @include margin-top($dimension);
+        }
+        .sm-marg-r-#{$name} {
+            @include margin-right($dimension);
+        }
+        .sm-marg-b-#{$name} {
+            @include margin-bottom($dimension);
+        }
+        .sm-marg-l-#{$name} {
+            @include margin-left($dimension);
+        }
+        .sm-marg-v-#{$name} {
+            @include margin-vertical($dimension);
+        }
+        .sm-marg-h-#{$name} {
+            @include margin-horizontal($dimension);
+        }
+    }
+    @each $name, $dimension in $marg-paired {
+        .sm-marg-v-#{$name} {
+            @include margin-vertical($dimension);
+        }
+        .sm-marg-h-#{$name} {
+            @include margin-horizontal($dimension);
+        }
+    }
+}
+@include media-size-md {
+    @each $name, $dimension in $marg-independent {
+        .md-marg-#{$name} {
+            @include margin-single($dimension);
+        }
+        .md-marg-t-#{$name} {
+            @include margin-top($dimension);
+        }
+        .md-marg-r-#{$name} {
+            @include margin-right($dimension);
+        }
+        .md-marg-b-#{$name} {
+            @include margin-bottom($dimension);
+        }
+        .md-marg-l-#{$name} {
+            @include margin-left($dimension);
+        }
+        .md-marg-v-#{$name} {
+            @include margin-vertical($dimension);
+        }
+        .md-marg-h-#{$name} {
+            @include margin-horizontal($dimension);
+        }
+    }
+    @each $name, $dimension in $marg-paired {
+        .md-marg-v-#{$name} {
+            @include margin-vertical($dimension);
+        }
+        .md-marg-h-#{$name} {
+            @include margin-horizontal($dimension);
+        }
+    }
+}
+@include media-size-lg {
+    @each $name, $dimension in $marg-independent {
+        .lg-marg-#{$name} {
+            @include margin-single($dimension);
+        }
+        .lg-marg-t-#{$name} {
+            @include margin-top($dimension);
+        }
+        .lg-marg-r-#{$name} {
+            @include margin-right($dimension);
+        }
+        .lg-marg-b-#{$name} {
+            @include margin-bottom($dimension);
+        }
+        .lg-marg-l-#{$name} {
+            @include margin-left($dimension);
+        }
+        .lg-marg-v-#{$name} {
+            @include margin-vertical($dimension);
+        }
+        .lg-marg-h-#{$name} {
+            @include margin-horizontal($dimension);
+        }
+    }
+    @each $name, $dimension in $marg-paired {
+        .lg-marg-v-#{$name} {
+            @include margin-vertical($dimension);
+        }
+        .lg-marg-h-#{$name} {
+            @include margin-horizontal($dimension);
+        }
+    }
+}
+@include media-size-xl {
+    @each $name, $dimension in $marg-independent {
+        .xl-marg-#{$name} {
+            @include margin-single($dimension);
+        }
+        .xl-marg-t-#{$name} {
+            @include margin-top($dimension);
+        }
+        .xl-marg-r-#{$name} {
+            @include margin-right($dimension);
+        }
+        .xl-marg-b-#{$name} {
+            @include margin-bottom($dimension);
+        }
+        .xl-marg-l-#{$name} {
+            @include margin-left($dimension);
+        }
+        .xl-marg-v-#{$name} {
+            @include margin-vertical($dimension);
+        }
+        .xl-marg-h-#{$name} {
+            @include margin-horizontal($dimension);
+        }
+    }
+    @each $name, $dimension in $marg-paired {
+        .xl-marg-v-#{$name} {
+            @include margin-vertical($dimension);
+        }
+        .xl-marg-h-#{$name} {
+            @include margin-horizontal($dimension);
+        }
+    }
+}
+/// No margin
+.no-marg {
+    margin: 0 !important;
+    &-t {margin-top: 0 !important;}
+    &-r {margin-right: 0 !important;}
+    &-b {margin-bottom: 0 !important;}
+    &-l {margin-left: 0 !important;}
+    &-v {margin-top: 0 !important; margin-bottom: 0 !important;}
+    &-h {margin-left: 0 !important; margin-right: 0 !important;}
+}
+@include media-size-sm {
+    .sm-no-marg {
+        margin: 0 !important;
+        &-t {margin-top: 0 !important;}
+        &-r {margin-right: 0 !important;}
+        &-b {margin-bottom: 0 !important;}
+        &-l {margin-left: 0 !important;}
+        &-v {margin-top: 0 !important; margin-bottom: 0 !important;}
+        &-h {margin-left: 0 !important; margin-right: 0 !important;}
+    }
+}
+@include media-size-md {
+    .md-no-marg {
+        margin: 0 !important;
+        &-t {margin-top: 0 !important;}
+        &-r {margin-right: 0 !important;}
+        &-b {margin-bottom: 0 !important;}
+        &-l {margin-left: 0 !important;}
+        &-v {margin-top: 0 !important; margin-bottom: 0 !important;}
+        &-h {margin-left: 0 !important; margin-right: 0 !important;}
+    }
+}
+@include media-size-lg {
+    .lg-no-marg {
+        margin: 0 !important;
+        &-t {margin-top: 0 !important;}
+        &-r {margin-right: 0 !important;}
+        &-b {margin-bottom: 0 !important;}
+        &-l {margin-left: 0 !important;}
+        &-v {margin-top: 0 !important; margin-bottom: 0 !important;}
+        &-h {margin-left: 0 !important; margin-right: 0 !important;}
+    }
+}
+@include media-size-xl {
+    .xl-no-marg {
+        margin: 0 !important;
+        &-t {margin-top: 0 !important;}
+        &-r {margin-right: 0 !important;}
+        &-b {margin-bottom: 0 !important;}
+        &-l {margin-left: 0 !important;}
+        &-v {margin-top: 0 !important; margin-bottom: 0 !important;}
+        &-h {margin-left: 0 !important; margin-right: 0 !important;}
+    }
+}
+
+// PADDINGS
+
+@each $name, $dimension in $pad-independent {
+    .pad-#{$name} {
+        @include padding-single($dimension);
+    }
+    .pad-t-#{$name} {
+        @include padding-top($dimension);
+    }
+    .pad-r-#{$name} {
+        @include padding-right($dimension);
+    }
+    .pad-b-#{$name} {
+        @include padding-bottom($dimension);
+    }
+    .pad-l-#{$name} {
+        @include padding-left($dimension);
+    }
+    .pad-v-#{$name} {
+        @include padding-vertical($dimension);
+    }
+    .pad-h-#{$name} {
+        @include padding-horizontal($dimension);
+    }
+}
+
+@each $name, $dimension in $pad-paired {
+    .marg-v-#{$name} {
+        @include padding-vertical($dimension);
+    }
+    .marg-h-#{$name} {
+        @include padding-horizontal($dimension);
+    }
+}
+
+@include media-size-sm {
+    @each $name, $dimension in $pad-independent {
+        .sm-pad-#{$name} {
+            @include padding-single($dimension);
+        }
+        .sm-pad-t-#{$name} {
+            @include padding-top($dimension);
+        }
+        .sm-pad-r-#{$name} {
+            @include padding-right($dimension);
+        }
+        .sm-pad-b-#{$name} {
+            @include padding-bottom($dimension);
+        }
+        .sm-pad-l-#{$name} {
+            @include padding-left($dimension);
+        }
+        .sm-pad-v-#{$name} {
+            @include padding-vertical($dimension);
+        }
+        .sm-pad-h-#{$name} {
+            @include padding-horizontal($dimension);
+        }
+    }
+    @each $name, $dimension in $pad-paired {
+        .sm-marg-v-#{$name} {
+            @include padding-vertical($dimension);
+        }
+        .sm-marg-h-#{$name} {
+            @include padding-horizontal($dimension);
+        }
+    }
+}
+
+@include media-size-md {
+    @each $name, $dimension in $pad-independent {
+        .md-pad-#{$name} {
+            @include padding-single($dimension);
+        }
+        .md-pad-t-#{$name} {
+            @include padding-top($dimension);
+        }
+        .md-pad-r-#{$name} {
+            @include padding-right($dimension);
+        }
+        .md-pad-b-#{$name} {
+            @include padding-bottom($dimension);
+        }
+        .md-pad-l-#{$name} {
+            @include padding-left($dimension);
+        }
+        .md-pad-v-#{$name} {
+            @include padding-vertical($dimension);
+        }
+        .md-pad-h-#{$name} {
+            @include padding-horizontal($dimension);
+        }
+    }
+    @each $name, $dimension in $pad-paired {
+        .md-marg-v-#{$name} {
+            @include padding-vertical($dimension);
+        }
+        .md-marg-h-#{$name} {
+            @include padding-horizontal($dimension);
+        }
+    }
+}
+
+@include media-size-lg {
+    @each $name, $dimension in $pad-independent {
+        .lg-pad-#{$name} {
+            @include padding-single($dimension);
+        }
+        .lg-pad-t-#{$name} {
+            @include padding-top($dimension);
+        }
+        .lg-pad-r-#{$name} {
+            @include padding-right($dimension);
+        }
+        .lg-pad-b-#{$name} {
+            @include padding-bottom($dimension);
+        }
+        .lg-pad-l-#{$name} {
+            @include padding-left($dimension);
+        }
+        .lg-pad-v-#{$name} {
+            @include padding-vertical($dimension);
+        }
+        .lg-pad-h-#{$name} {
+            @include padding-horizontal($dimension);
+        }
+    }
+    @each $name, $dimension in $pad-paired {
+        .lg-marg-v-#{$name} {
+            @include padding-vertical($dimension);
+        }
+        .lg-marg-h-#{$name} {
+            @include padding-horizontal($dimension);
+        }
+    }
+}
+
+@include media-size-xl {
+    @each $name, $dimension in $pad-independent {
+        .xl-pad-#{$name} {
+            @include padding-single($dimension);
+        }
+        .xl-pad-t-#{$name} {
+            @include padding-top($dimension);
+        }
+        .xl-pad-r-#{$name} {
+            @include padding-right($dimension);
+        }
+        .xl-pad-b-#{$name} {
+            @include padding-bottom($dimension);
+        }
+        .xl-pad-l-#{$name} {
+            @include padding-left($dimension);
+        }
+        .xl-pad-v-#{$name} {
+            @include padding-vertical($dimension);
+        }
+        .xl-pad-h-#{$name} {
+            @include padding-horizontal($dimension);
+        }
+    }
+    @each $name, $dimension in $pad-paired {
+        .xl-marg-v-#{$name} {
+            @include padding-vertical($dimension);
+        }
+        .xl-marg-h-#{$name} {
+            @include padding-horizontal($dimension);
+        }
+    }
+}
+
+/// No padding
+.no-pad {
+    padding: 0 !important;
+    &-t {padding-top: 0 !important;}
+    &-r {padding-right: 0 !important;}
+    &-b {padding-bottom: 0 !important;}
+    &-l {padding-left: 0 !important;}
+    &-v {padding-top: 0 !important; padding-bottom: 0 !important;}
+    &-h {padding-left: 0 !important; padding-right: 0 !important;}
+}
+@include media-size-sm {
+    .sm-no-pad {
+        padding: 0 !important;
+        &-t {padding-top: 0 !important;}
+        &-r {padding-right: 0 !important;}
+        &-b {padding-bottom: 0 !important;}
+        &-l {padding-left: 0 !important;}
+        &-v {padding-top: 0 !important; padding-bottom: 0 !important;}
+        &-h {padding-left: 0 !important; padding-right: 0 !important;}
+    }
+}
+@include media-size-md {
+    .md-no-pad {
+        padding: 0 !important;
+        &-t {padding-top: 0 !important;}
+        &-r {padding-right: 0 !important;}
+        &-b {padding-bottom: 0 !important;}
+        &-l {padding-left: 0 !important;}
+        &-v {padding-top: 0 !important; padding-bottom: 0 !important;}
+        &-h {padding-left: 0 !important; padding-right: 0 !important;}
+    }
+}
+@include media-size-lg {
+    .lg-no-pad {
+        padding: 0 !important;
+        &-t {padding-top: 0 !important;}
+        &-r {padding-right: 0 !important;}
+        &-b {padding-bottom: 0 !important;}
+        &-l {padding-left: 0 !important;}
+        &-v {padding-top: 0 !important; padding-bottom: 0 !important;}
+        &-h {padding-left: 0 !important; padding-right: 0 !important;}
+    }
+}
+@include media-size-xl {
+    .xl-no-pad {
+        padding: 0 !important;
+        &-t {padding-top: 0 !important;}
+        &-r {padding-right: 0 !important;}
+        &-b {padding-bottom: 0 !important;}
+        &-l {padding-left: 0 !important;}
+        &-v {padding-top: 0 !important; padding-bottom: 0 !important;}
+        &-h {padding-left: 0 !important; padding-right: 0 !important;}
+    }
+}

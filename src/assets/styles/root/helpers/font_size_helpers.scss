@@ -1,0 +1,65 @@
+// Dependencies
+
+// Font size helpers
+@each $name, $size in $font-size {
+    .fs-#{$name} {
+        @include font-size($size);
+    }
+    .#{$name} {
+        @include font-size($size);
+        @include line-height(map-get($line-height, $name));
+        @include margin-bottom(map-get($margin-bottom, $name));
+    }
+}
+
+@include media-size-sm {
+    @each $name, $size in $font-size {
+        .sm-fs-#{$name} {
+            @include font-size($size);
+        }
+        .sm-#{$name} {
+            @include font-size($size);
+            @include line-height(map-get($line-height, $name));
+            @include margin-bottom(map-get($margin-bottom, $name));
+        }
+    }
+}
+
+@include media-size-md {
+    @each $name, $size in $font-size {
+        .md-fs-#{$name} {
+            @include font-size($size);
+        }
+        .md-#{$name} {
+            @include font-size($size);
+            @include line-height(map-get($line-height, $name));
+            @include margin-bottom(map-get($margin-bottom, $name));
+        }
+    }
+}
+
+@include media-size-lg {
+    @each $name, $size in $font-size {
+        .lg-fs-#{$name} {
+            @include font-size($size);
+        }
+        .lg-#{$name} {
+            @include font-size($size);
+            @include line-height(map-get($line-height, $name));
+            @include margin-bottom(map-get($margin-bottom, $name));
+        }
+    }
+}
+
+@include media-size-xl {
+    @each $name, $size in $font-size {
+        .xl-fs-#{$name} {
+            @include font-size($size);
+        }
+        .xl-#{$name} {
+            @include font-size($size);
+            @include line-height(map-get($line-height, $name));
+            @include margin-bottom(map-get($margin-bottom, $name));
+        }
+    }
+}

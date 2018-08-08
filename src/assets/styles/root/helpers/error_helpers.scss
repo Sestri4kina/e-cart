@@ -1,0 +1,5 @@
+.error {
+    color: map-get($color-theme, error);
+    font-size: map-get($font-size, caption1);
+    display: block;
+}

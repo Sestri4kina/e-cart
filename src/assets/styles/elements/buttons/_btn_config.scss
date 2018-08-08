@@ -1,0 +1,31 @@
+// DEFAULT BTN
+$default-btn-border-radius: map-get($border-radius, btn-border-radius);
+$default-btn-font-weight: map-get($font-weight, bold);
+$default-btn-font-size: map-get($font-size, caption1);
+$default-btn-line-height: map-get($line-height, caption1);
+$default-btn-padding-top-bottom: map-get($marg-independent, xs);
+$default-btn-padding-left-right: map-get($marg-paired, xl);
+
+// SM BTN
+$sm-btn-padding-top-bottom: map-get($marg-paired, xs);
+$sm-btn-padding-left-right: map-get($marg-independent, xs);
+$sm-btn-font-size: map-get($font-size, body2);
+$sm-btn-font-weight: map-get($font-weight, bold);
+$sm-btn-line-height: map-get($line-height, body2);
+
+
+// MD BTN
+$md-btn-padding-top-bottom: map-get($marg-independent, xs);
+$md-btn-padding-left-right: map-get($marg-independent, sm1);
+$md-btn-font-size: map-get($font-size, body2);
+$md-btn-font-weight: map-get($font-weight, bold);
+$md-btn-line-height: map-get($line-height, body2);;
+
+// LG BTN
+$lg-btn-padding-top-bottom: map-get($marg-independent, xs);
+$lg-btn-padding-left-right: map-get($marg-independent, sm2);
+$lg-btn-font-size: map-get($font-size, subtitle);
+$lg-btn-font-weight: map-get($font-weight, bold);
+$lg-btn-line-height: map-get($line-height, subtitle);
+
+

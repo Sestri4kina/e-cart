@@ -1,0 +1,7 @@
+$header-nav-item-primary-border-color: map-get($color-theme, primary);
+$header-nav-item-primary-color: map-get($color-theme, dark);
+$header-underline-color: map-get($grey, tertiary);
+$header-nav-item-active-color: map-get($color-theme, primary);
+$header-bg: map-get($grey, primary);
+$header-nav-account-hover-color: map-get($color-theme, primary);
+$header-nav-item-mobile-bg: map-get($color-theme, white);

@@ -1,0 +1,32 @@
+.header-nav-item {
+    &-primary {
+        color: $header-nav-item-primary-color;
+        cursor: pointer;
+        &:hover {
+            color: $header-nav-item-active-color;
+            text-decoration: $header-nav-item-hover-text-decoration;
+        }
+        &.active, &:active {
+            color: $header-nav-item-active-color;
+            font-weight: bold;
+            &:after {
+                content: ' ';
+                display: block;
+                position: absolute;
+                bottom: $header-nav-item-primary-position-bottom;
+                left: $header-nav-item-primary-position-left;
+                width: $header-nav-item-primary-width;
+                border-bottom-width: $header-nav-item-primary-border-width;
+                border-bottom-style: $header-nav-item-primary-border-style;
+                border-bottom-color: $header-nav-item-primary-border-color;
+            }    
+        }
+    }
+}
+
+.header-nav-account {
+    &-primary {
+        color: $header-nav-item-primary-color;
+        cursor: pointer;
+    }
+}

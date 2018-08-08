@@ -1,0 +1,31 @@
+.f-normal {font-style: normal;}
+i, em, .italic, .f-italic {font-style: italic;}
+.f-oblique {font-style: oblique;}
+
+mark, .t-marked {
+    color: #{map-get($color-theme, dark)};
+    padding: .2em;
+    background-color: #{map-get($color-theme, disable)};
+}
+
+del, .t-del {text-decoration: line-through;}
+s, .t-strikethrough {text-decoration: line-through;}
+ins, .t-inserted {text-decoration: underline;}
+u, .t-underlined {text-decoration: underline;}
+small, .t-small {font-size: 85%;}
+strong, b {font-weight: bold;}
+i, em {font-style: italic;}
+
+.t-overline {text-decoration: overline;}
+.no-t-decor {text-decoration: none;}
+.t-muted {color: $text-muted;}
+.t-primary {color: #{map-get($color-theme, dark)};}
+.t-teal {color: #{map-get($color-theme, primary)};}
+.t-orange {color: #{map-get($color-theme, warning)};}
+.t-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}

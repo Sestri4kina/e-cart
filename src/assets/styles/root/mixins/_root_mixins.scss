@@ -1,0 +1,257 @@
+/* Set rem font-size with pixel fallback */
+@function rem($pixels, $context: $root-font-size) {
+  @return $pixels / $context + rem;
+}
+
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: rem($size);
+}
+
+@mixin line-height($size) {
+    line-height: $size;
+    line-height: rem($size);
+}
+
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+    border-radius: rem($radius);
+}
+
+@mixin width($width) {
+    width: $width;
+    width: rem($width);
+}
+
+@mixin height($height) {
+    height: $height;
+    height: rem($height);
+}
+
+@mixin top($dimension) {
+    top: $dimension;
+    top: rem($dimension);
+}
+
+@mixin right($dimension) {
+    right: $dimension;
+    right: rem($dimension);
+}
+
+@mixin bottom($dimension) {
+    bottom: $dimension;
+    bottom: rem($dimension);
+}
+
+@mixin left($dimension) {
+    left: $dimension;
+    left: rem($dimension);
+}
+
+/* USAGE (Set rem font-size with pixel fallback) */
+// p {
+//   @include font-size(14px)
+// }
+
+/*  Breakpoints (TODO define sizes!!!!!) */
+@mixin media-size-xl {
+  @media all and (min-width: $media-size-xl) {
+    @content;
+  }
+}
+
+@mixin media-size-lg {
+  @media all and (min-width: $media-size-lg) {
+    @content;
+  }
+}
+
+@mixin media-size-md {
+  @media all and (min-width: $media-size-md) {
+    @content;
+  }
+}
+
+@mixin media-size-sm {
+  @media all and (min-width: $media-size-sm) {
+    @content;
+  }
+}
+
+/*  SVG background images with PNG and retina fallback (TODO fix image path!!!!!) */
+$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false){
+    background-image: url(#{$image-path}/#{$name}.svg);
+    @if($size){
+        background-size: $size;
+    }
+    .no-svg &{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}
+
+/*  Animations and keyframes */
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+/* USAGE (Animations and keyframes)*/
+// @include keyframes(slide-down) {
+//   0% { opacity: 1; }
+//   90% { opacity: 0; }
+// }
+//
+// .element {
+//   width: 100px;
+//   height: 100px;
+//   background: black;
+//   @include animation('slide-down 5s 3');
+// }
+
+/* Transitions */
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+/* USAGE */
+// a {
+//   color: gray;
+//   @include transition(color .3s ease);
+//   &:hover {
+//     color: black;
+//   }
+// }
+
+/* Cross browser opacity */
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/* USAGE (Cross browser opacity) */
+// .faded-text {
+//   @include opacity(0.8);
+// }
+
+/* Clearfix */
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/* USAGE (Clearfix) */
+// .container-with-floated-children {
+//   @extend %clearfix;
+// }
+
+/* Visually hidden element */
+%visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+/* USAGE (Visually hidden element) */
+// .visually-hidden {
+//   @extend %visuallyhidden;
+// }
+
+/* Z index */
+
+@function z($name) {
+    @if index($z-indexes, $name) {
+        @return (length($z-indexes) - index($z-indexes, $name)) + 1;
+    } @else {
+        @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+        @return null;
+    }
+}
+// $z-indexes: (
+//     "outdated-browser",
+//     "modal",
+//     "site-header",
+//     "page-wrapper",
+//     "site-footer"
+// );
+
+/* USAGE (Z-index) */
+// .site-header {
+//     z-index: z('site-header');
+// }
+
+/* Truncate */
+
+@mixin truncate($truncation-boundary) {
+    max-width: $truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* USAGE (Truncate) */
+// .text-label {
+//     @include truncate(300px);
+// }
+
+/* Placeholders */
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+/* USAGE (Placeholders) */
+// input,
+// textarea {
+//     @include input-placeholder {
+//         color: $grey;
+//     }
+// }

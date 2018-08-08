@@ -15,15 +15,20 @@ import { AuthInterceptor } from '@app/shared/services/auth-interceptor.service';
 import { AuthEffects } from '@app/shared/effects/auth';
 import { ProductEffects } from '@app/shared/effects/product';
 import { UtilsModule } from '@app/shared/services/utils/utils.module';
+import { HeaderComponent } from '@app/shared/components/header/header.component';
+import { FooterComponent } from '@app/shared/components/footer/footer.component';
+import { HomeComponent } from '@app/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
       AuthEffects,
@@ -31,7 +36,8 @@ import { UtilsModule } from '@app/shared/services/utils/utils.module';
     ]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     RemoteAPIModule.forRoot(),
-    UtilsModule.forRoot()
+    UtilsModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     {

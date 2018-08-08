@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_minus_disabled</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-164.000000, -133.000000)">
+        <g id="ic_minus_disabled" transform="translate(164.000000, 133.000000)">
+            <circle id="PrimaryShade3-Copy-2" cx="16" cy="16" r="16"></circle>
+            <rect id="PrimaryMain-Copy" fill="#00151A" opacity="0.25" x="8" y="15" width="16" height="2" rx="1"></rect>
+        </g>
+    </g>
+</svg>

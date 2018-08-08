@@ -1,0 +1,8 @@
+// Dependencies
+
+// Font weight helpers
+@each $name, $weight in $font-weight {
+    .fw-#{$name} {
+        font-weight: $weight;
+    }
+}

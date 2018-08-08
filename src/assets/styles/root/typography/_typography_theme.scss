@@ -1,0 +1,10 @@
+// Text on white background
+$text-on-white-primary: #{map-get($on-white, primary)};
+$text-on-white-secondary: #{map-get($on-white, secondary)};
+$text-on-white-disabled: #{map-get($on-white, disabled)};
+
+// Text on dark background
+$text-on-dark-primary: #{map-get($on-dark, primary)};
+$text-on-dark-secondary: #{map-get($on-dark, secondary)};
+$text-on-dark-disabled: #{map-get($on-dark, disabled)};
+

@@ -1,0 +1,170 @@
+/// Root normalize
+//// Dt
+$dt-font-weight:              bold !default;
+//// Link
+$link-color:                  #{map-get($color-theme, primary)};
+$link-decoration:             none;
+$link-hover-color:            #{map-get($color-theme, primary)};
+$link-hover-decoration:       underline;
+//// Text
+$text-muted:                  #{map-get($on-white, default)} !default;
+//// Caption
+$table-cell-padding:          .75rem !default;
+
+//// Border radius
+$border-radius: (
+    fixit: 0px,
+    xs: 4px,
+    sm: 8px,
+    md: 12px,
+    lg: 16px,
+    xl: 20px
+);
+
+// Root (Document.scss variables)
+$root-font-family:            'Open Sans', sans-serif;
+//$root-icon-font-family:       'FontAwesome';
+$root-font-size:              16px;
+$root-font-weight:            400;
+$root-line-height:            24px;
+$root-text-color:             #{map-get($color-theme, dark)};
+$root-body-bg:                map-get($color-theme, white);
+
+// Rythms
+$horizontal-vertical-rythm:   4px;
+$horizontal-rythm:            4px;
+$vertical-rythm:              4px;
+
+$margin-padding-exception:    3px;
+
+// Grid variables
+$grid-columns:                12 !default;
+$grid-gutter-width:           32px !default;
+
+$media-size-xl:               1200px;
+$media-size-lg:               996px;
+$media-size-md:               768px;
+$media-size-sm:               576px;
+$media-size-xs:               0; // Const //320
+
+$container-sm-max-width:      540px;
+$container-md-max-width:      720px;
+$container-lg-max-width:      960px;
+$container-xl-max-width:      1140px;
+
+
+// Typography
+$typography-proportion-coef:  1.2;
+$golden-ratio-coef1:          1.618;
+$golden-ratio-coef2:          0.618;
+$typography-core-font-size:   8px;
+
+$font-size-coefs: (
+    1: pow($typography-proportion-coef, 1),
+    2: pow($typography-proportion-coef, 2),
+    3: pow($typography-proportion-coef, 3),
+    4: pow($typography-proportion-coef, 4),
+    5: pow($typography-proportion-coef, 5),
+    6: pow($typography-proportion-coef, 6),
+    7: pow($typography-proportion-coef, 7),
+    8: pow($typography-proportion-coef, 8),
+    9: pow($typography-proportion-coef, 9)
+);
+
+$font-size: (
+    mega1:     round($typography-core-font-size * map-get($font-size-coefs, 9)),
+    mega2:     round($typography-core-font-size * map-get($font-size-coefs, 8)),
+    maintitle: round($typography-core-font-size * map-get($font-size-coefs, 7)),
+    title:     round($typography-core-font-size * map-get($font-size-coefs, 6)),
+    subtitle:  round($typography-core-font-size * map-get($font-size-coefs, 5)),
+    body1:     round($typography-core-font-size * map-get($font-size-coefs, 4)),
+    body2:     round($typography-core-font-size * map-get($font-size-coefs, 3)),
+    //body2: 16,
+    caption1:  round($typography-core-font-size * map-get($font-size-coefs, 2)),
+    caption2:  round($typography-core-font-size * map-get($font-size-coefs, 1))
+);
+
+$line-height: (
+    mega1:     60px,
+    mega2:     48px,
+    maintitle: 40px,
+    title:     36px,
+    subtitle:  28px,
+    body1:     24px,
+    body2:     20px,
+    caption1:  search-nearest($typography-core-font-size, $golden-ratio-coef1 * map-get($font-size, caption1)),
+    caption2:  search-nearest($typography-core-font-size, $golden-ratio-coef1 * map-get($font-size, caption2))
+);
+
+$margin-bottom: (
+    mega1:     search-nearest($typography-core-font-size, $golden-ratio-coef2 * map-get($font-size, mega1)),
+    mega2:     search-nearest($typography-core-font-size, $golden-ratio-coef2 * map-get($font-size, mega2)),
+    maintitle: search-nearest($typography-core-font-size, $golden-ratio-coef2 * map-get($font-size, maintitle)),
+    title:     search-nearest($typography-core-font-size, $golden-ratio-coef2 * map-get($font-size, title)),
+    subtitle:  search-nearest($typography-core-font-size, $golden-ratio-coef2 * map-get($font-size, subtitle)),
+    body1:     search-nearest($typography-core-font-size, $golden-ratio-coef2 * map-get($font-size, body1)),
+    body2:     4px,
+    caption1:  4px,
+    caption2:  4px
+);
+
+$font-weight: (
+    thin: 100,
+    normal: 400,
+    semibold: 500,
+    bold: 600
+);
+
+$icon: (
+    xs: map-get($font-size, body1),
+    sm: map-get($font-size, subtitle),
+    md: map-get($font-size, title),
+    lg: map-get($font-size, maintitle),
+    xl: map-get($font-size, mega2)
+);
+
+//Margins
+$marg-independent: (
+    xs: $horizontal-vertical-rythm * 2,  // 8
+    sm2: $horizontal-vertical-rythm * 4,  // 16
+    sm1: $horizontal-vertical-rythm * 6,  // 24
+    md2: $horizontal-vertical-rythm * 8,  // 32
+    md1: $horizontal-vertical-rythm * 10,  // 40
+    lg2: $horizontal-vertical-rythm * 12, // 48
+    lg1: $horizontal-vertical-rythm * 14, // 56
+    xl: $horizontal-vertical-rythm * 16 // 64
+);
+
+$marg-paired: (
+    xs: $horizontal-vertical-rythm * 1,  // 4
+    sm2: $horizontal-vertical-rythm * 3,  // 12
+    sm1: $horizontal-vertical-rythm * 5,  // 20
+    md2: $horizontal-vertical-rythm * 7,  // 28
+    md1: $horizontal-vertical-rythm * 9,  // 36
+    lg2: $horizontal-vertical-rythm * 11,  // 44
+    lg1: $horizontal-vertical-rythm * 13,  // 52
+    xl: $horizontal-vertical-rythm * 15  // 60
+);
+
+//Paddings
+$pad-independent: (
+    xs: $horizontal-vertical-rythm * 2,  // 8
+    sm2: $horizontal-vertical-rythm * 4,  // 16
+    sm1: $horizontal-vertical-rythm * 6,  // 24
+    md2: $horizontal-vertical-rythm * 8,  // 32
+    md1: $horizontal-vertical-rythm * 10,  // 40
+    lg2: $horizontal-vertical-rythm * 12, // 48
+    lg1: $horizontal-vertical-rythm * 14, // 56
+    xl: $horizontal-vertical-rythm * 16 // 64
+);
+
+$pad-paired: (
+    xs: $horizontal-vertical-rythm * 1,  // 4
+    sm2: $horizontal-vertical-rythm * 3,  // 12
+    sm1: $horizontal-vertical-rythm * 5,  // 20
+    md2: $horizontal-vertical-rythm * 7,  // 28
+    md1: $horizontal-vertical-rythm * 9,  // 36
+    lg2: $horizontal-vertical-rythm * 11,  // 44
+    lg1: $horizontal-vertical-rythm * 13,  // 52
+    xl: $horizontal-vertical-rythm * 15  // 60
+);

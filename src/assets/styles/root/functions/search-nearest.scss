@@ -1,0 +1,9 @@
+@function search-nearest($step, $value) {
+    $unit: floor($value/$step); //3.43825
+    $diff: $value - $unit * $step; //27.506 - 24 = 3.5
+    @if $diff < $step / 2 {
+        @return $unit * $step; // 24
+    } @else {
+        @return ($unit + 1) * $step;
+    }
+}

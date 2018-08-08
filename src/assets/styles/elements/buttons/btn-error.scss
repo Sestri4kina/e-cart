@@ -1,0 +1,43 @@
+.btn {
+    &.btn-error {
+        background-color: $btn-error-default-bg;
+        color: $btn-error-text-color;
+        text-transform: uppercase;
+        font-weight: bold;
+        &:hover,
+        &.btn-hover {
+            background-color: $btn-error-hover-bg;
+        }
+        &:focus,
+        &.btn-focus {
+            background-color: $btn-error-pressed-bg;
+        }
+        &:active,
+        &.btn-active {
+            background-color: $btn-error-pressed-bg;
+        }
+        &-inverse {
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: transparent;
+            color: $btn-error-inverse-text-color;
+            text-transform: uppercase;
+            font-weight: bold;
+            &:hover,
+            &.btn-hover {
+                background-color: $btn-error-inverse-hover-bg;
+                color: $btn-error-inverse-hover-color;
+            }
+            &:focus,
+            &.btn-focus {
+                background-color: $btn-error-inverse-pressed-bg;
+                color: $btn-error-inverse-pressed-color;
+            }
+            &:active,
+            &.btn-active {
+                background-color: $btn-error-inverse-active-bg;
+                color: $btn-error-inverse-active-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+$h1-fs: map-get($font-size, maintitle);
+$h1-lh: map-get($line-height, maintitle);
+$h1-fw: map-get($font-weight, bold);
+$h1-normal-fw: map-get($font-weight, normal);
+$h1-marg-b: map-get($margin-bottom, maintitle);
+
+$h2-fs: map-get($font-size, title);
+$h2-lh: map-get($line-height, title);
+$h2-fw: map-get($font-weight, bold);
+$h2-normal-fw: map-get($font-weight, normal);
+$h2-marg-b: map-get($margin-bottom, title);
+
+$h3-fs: map-get($font-size, subtitle);
+$h3-lh: map-get($line-height, subtitle);
+$h3-fw: map-get($font-weight, bold);
+$h3-normal-fw: map-get($font-weight, normal);
+$h3-marg-b: map-get($margin-bottom, subtitle);
+
+$h4-fs: map-get($font-size, body1);
+$h4-lh: map-get($line-height, body1);
+$h4-fw: map-get($font-weight, bold);
+$h4-normal-fw: map-get($font-weight, normal);
+$h4-marg-b: map-get($margin-bottom, body1);
+
+$h5-fs: map-get($font-size, body2);
+$h5-lh: map-get($line-height, body2);
+$h5-fw: map-get($font-weight, bold);
+$h5-normal-fw: map-get($font-weight, normal);
+$h5-marg-b: map-get($margin-bottom, body2);
+
+$h6-fs: map-get($font-size, caption1);
+$h6-lh: map-get($line-height, caption1);
+$h6-fw: map-get($font-weight, bold);
+$h6-normal-fw: map-get($font-weight, normal);
+$h6-marg-b: map-get($margin-bottom, caption1);
+
+$p-fs: map-get($font-size, body1);
+$p-lh: map-get($line-height, body1);
+$p-fw: map-get($font-weight, normal);
+$p-bold-fw: map-get($font-weight, bold);
+$p-marg-b: map-get($margin-bottom, body1);
+
+$p-small-fs: map-get($font-size, body2);
+$p-small-lh: map-get($line-height, body2);
+$p-small-fw: map-get($font-weight, normal);
+$p-small-bold-fw: map-get($font-weight, bold);
+$p-small-marg-b: map-get($margin-bottom, body2);

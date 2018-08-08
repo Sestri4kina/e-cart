@@ -1,0 +1,39 @@
+<header class="header">
+  <div class="container-fluid">
+    <div class="row justify-content-end">
+      <div class="col-6">
+        <!-- NAVBAR -->
+        <nav class="header-nav">
+          <a class="header-nav-item header-nav-item-primary" 
+            routerLink="/home"
+            routerLinkActive="active">
+            Home
+          </a>
+          <a class="header-nav-item header-nav-item-primary" 
+            routerLink="/cart"
+            routerLinkActive="active">
+           Cart
+          </a>
+        </nav>
+
+        <!-- SIDEBAR: SMALL SCREENS -->
+        <div class="burger-button" (click)="toggleSidebar()">
+          <img [src]="burgerMenuPath" />
+        </div>
+
+        <div class="header-nav header-nav--mobile" [ngClass]="{show: isSidebarOpen}">
+          <a class="header-nav-item header-nav-item-primary" 
+            (click)="openLink($event, '/home')">
+            Home
+          </a>
+          <a class="header-nav-item header-nav-item-primary" 
+            (click)="openLink($event, '/cart')">
+            Cart
+          </a>
+        </div>
+
+      </div> <!-- div.col.navbar -->
+    </div> <!-- div.row -->
+  </div> <!-- div.container -->
+</header>
+
