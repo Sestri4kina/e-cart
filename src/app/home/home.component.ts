@@ -5,8 +5,9 @@ import * as fromRoot from '@app/shared/reducers';
 import * as productAction from '@app/shared/actions/product';
 
 import { filter, takeUntil } from "rxjs/operators";
-import { Product } from '@app/shared/models/product';
+import { Product, ProductWithImage } from '@app/shared/models/product';
 import { BaseComponent } from '@app/shared/components/base/base.component';
+import { ProductUtilsService } from '@app/shared/services/utils/product-utils.service';
 
 @Component({
   selector: 'app-home',
@@ -14,25 +15,17 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 })
 export class HomeComponent extends BaseComponent implements OnInit {
 
-  products: Array<Product>;
+  products: Array<ProductWithImage>;
 
   constructor ( 
-    private store: Store<fromRoot.State>
+    private store: Store<fromRoot.State>,
+    private productUtilsService: ProductUtilsService,
   ) {
     super();
   }
 
   ngOnInit() {
-    //test
-    this.store.select(s => s.auth)
-        .pipe(
-            filter(_ => !!_.hasAccessToken),
-            takeUntil(this.unsubscribe$)
-        )
-        .subscribe(authState => {
-            console.log(authState);
-            this.initProducts();
-        })
+    this.initProducts();
   }
 
 
@@ -44,9 +37,10 @@ export class HomeComponent extends BaseComponent implements OnInit {
         filter(_ => !!_.products),
         takeUntil(this.unsubscribe$)
       )
-      .subscribe((productsData) => {
-        console.log(productsData);
-        this.products = productsData.products.data;
+      .subscribe((productState) => {
+        console.log(productState);
+        this.products = this.productUtilsService.composeProductArray(productState.products.data, productState.products.included.main_images);
+        console.log(this.products);
       });
   }
 

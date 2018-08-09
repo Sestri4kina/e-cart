@@ -1,0 +1,14 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    max-width: 450px;
+    display: block;
+    margin: 0 auto;
+}
+
+.card-container {
+    padding-top: $card-container-padding-top;
+    padding-bottom: $card-container-padding-bottom;
+    @include padding-horizontal($card-container-padding-horizontal);
+}

@@ -1,5 +1,6 @@
 export interface Products {
     data: Array<Product>;
+    included: MainImages;
     links: Links;
     meta: Meta;
 }
@@ -18,6 +19,8 @@ export interface Product {
     status: string;
     type: string;
 }
+
+export interface ProductWithImage {}
 
 interface Price {
     amount: number;
@@ -51,10 +54,10 @@ interface Timestamps {
 
 interface ProductRelationships {
     main_image: {
-        data: Array<{
+        data: {
             type: string; 
             id: string;
-        }>
+        }
     };
     files: {
         data: Array<{
@@ -83,3 +86,32 @@ interface Meta {
         all: number;
     }
 }
+
+export interface MainImages {
+    main_images: Array<ImageData>;
+}
+
+export interface ImageData {
+    file_name: string;
+    file_size: number;
+    id: string;
+    link: {
+        href: string;
+    },
+    links: {
+        self: string;
+    },
+    meta: {
+        dimensions: {
+            height: number;
+            width: number;
+        },
+        timestamps: {
+            created_at: string;
+        }
+    }
+    mime_type: string;
+    public: boolean;
+    type: string;
+}
+

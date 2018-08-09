@@ -14,7 +14,7 @@ export class ProductAPIService {
   ) {}
 
   getProducts(): Observable<Products> {
-    return this.httpService.get(`${this.config.productsPath}`);
+    return this.httpService.get(`${this.config.productsPath}?include=main_image`);
   }
 
 }

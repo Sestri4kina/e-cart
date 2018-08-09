@@ -8,6 +8,14 @@
     margin: auto;
 }
 
+.product-image {
+    display: block;
+    margin: auto;
+    height: 200px;
+    max-width: 100%;
+    object-fit: scale-down;
+}
+
 .wrapper {
     @extend .d-none;
     @extend .md-d-inline-block;

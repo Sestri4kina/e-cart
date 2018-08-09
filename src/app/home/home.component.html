@@ -1,6 +1,20 @@
-<h1>e-cart</h1>
-<div *ngIf="products">
-    <ul *ngFor="let product of products">
-        <li>Product: {{ product.name }}</li>
-    </ul>
+<div class="container" *ngIf="products">
+    <div class="row justify-content-center marg-v-sm2">
+        <div class="col-12 col-xl-3 col-lg-4 col-md-4 col-sm-6"  *ngFor="let product of products">
+            <div class="image-card image-card-container">
+                <img [src]="product.imageData.link.href"
+                    class="product-image">
+                <div class="card-container">
+                    <h5>{{ product.name }}</h5>
+                    <h5 class="price-info">{{ product.price[0].currency }} {{ product.price[0].amount/100  }}</h5>
+                    <!-- <h5 class="normal c-grey-quaternary">{{product.description}}</h5> -->
+                    <div class="text-c">
+                        <button type="button "class="btn btn-primary btn-md marg-t-sm1">
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

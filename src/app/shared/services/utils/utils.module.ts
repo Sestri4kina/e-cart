@@ -1,6 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { HandleTokenService } from '@app/shared/services/utils/handle-token.service';
+import { ProductUtilsService } from '@app/shared/services/utils/product-utils.service';
 
 
 @NgModule({})
@@ -9,7 +10,8 @@ export class UtilsModule {
     return {
       ngModule: UtilsModule,
       providers: [
-        HandleTokenService
+        HandleTokenService,
+        ProductUtilsService
       ]
     };
   }

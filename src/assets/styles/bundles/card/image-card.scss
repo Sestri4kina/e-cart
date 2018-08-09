@@ -1,0 +1,20 @@
+.image-card {
+   width: 100%;
+   border-radius: $image-card-border-radius;
+   background: $image-card-bg;
+   display: block;
+   margin: auto;
+   &-container {
+        padding-top: $image-card-container-padding-top;
+        padding-bottom: $image-card-container-padding-bottom;
+        @include padding-horizontal($image-card-container-padding-horizontal);
+   }
+}
+
+.price-info {
+    @include font-size($h5-fs);
+    @include line-height($h5-lh);
+    margin-bottom: 0 !important;
+    font-weight: normal;
+    color: $price-info-color;
+}

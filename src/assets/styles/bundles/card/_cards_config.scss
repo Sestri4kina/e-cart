@@ -1,0 +1,11 @@
+$card-container-padding-horizontal: map-get($pad-paired, xs);
+$card-container-padding-top: map-get($pad-independent, xs);
+$card-container-padding-bottom: map-get($pad-independent, xs);
+
+$image-card-border-radius: map-get($border-radius, card-border-radius);
+$image-card-container-padding-horizontal: map-get($pad-independent, xs);
+$image-card-container-padding-top: map-get($pad-independent, xs);
+$image-card-container-padding-bottom: map-get($pad-independent, xs);
+
+$card-grey-pad: map-get($pad-independent, sm2);
+$card-grey-border-radius: map-get($border-radius, card-border-radius);
