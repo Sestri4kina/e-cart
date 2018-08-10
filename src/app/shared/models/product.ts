@@ -1,8 +1,10 @@
+import { Timestamps, DisplayPrice, Price } from "@app/shared/models/shared";
+
 export interface Products {
     data: Array<Product>;
     included: MainImages;
     links: Links;
-    meta: Meta;
+    meta: ProductsMeta;
 }
 
 export interface Product {
@@ -20,19 +22,24 @@ export interface Product {
     type: string;
 }
 
-export interface ProductWithImage {}
-
-interface Price {
-    amount: number;
-    currency: string; 
-    includes_tax: boolean;
+export interface ProductWithImage {
+    commodity_type: "physical" | "digital";
+    description: string;
+    id: string;
+    manage_stock: boolean;
+    meta: ProductMeta;
+    name: string;
+    price: Array<Price>;
+    relationships: ProductRelationships;
+    sku: string;
+    slug: string;
+    status: string;
+    type: string;
+    imageData: ImageData;
 }
 
 interface ProductMeta {
-    display_price: {
-        with_tax: DisplayPrice;
-        without_tax: DisplayPrice;
-    };
+    display_price: DisplayPrice;
     stock: {
         level: number;
         availability: "in-stock" | "out-stock"
@@ -41,16 +48,6 @@ interface ProductMeta {
     timestamps: Timestamps;
 }
 
-interface DisplayPrice {
-    amount: number;
-    currency: string;
-    formatted: string;
-}
-
-interface Timestamps {
-    created_at: string;
-    updated_at: string;
-}
 
 interface ProductRelationships {
     main_image: {
@@ -74,7 +71,7 @@ interface Links {
     last: string;
 }
 
-interface Meta {
+interface ProductsMeta {
     page: {
         current: number;
         limit: number;

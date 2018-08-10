@@ -24,6 +24,6 @@ export class Load implements Action {
   }
   
   export type ProductActions =
-    | Load
+    Load
     | LoadSuccess
     | LoadFailure;

@@ -53,8 +53,18 @@ export class GenericHttpService {
   put(path: string, body: Object = {}): Observable<any> {
     const fullPath: string = `${this.apiPath}/${path}`;
     let headers = new HttpHeaders();
-    headers = headers.set("Content-Type", "application/json; charset=utf-8").set('Accept', 'application/json');
+    headers = headers.set("Content-Type", "application/json; charset=utf-8")
+                    .set('Accept', 'application/json');
 
     return this.http.put(fullPath, body, { headers });
+  }
+
+  delete(path: string): Observable<any> {
+    const fullPath: string = `${this.apiPath}/${path}`;
+    let headers = new HttpHeaders();
+    headers = headers.set("Content-Type", "application/json; charset=utf-8")
+                    .set('Accept', 'application/json');
+
+    return this.http.delete(fullPath, { headers });
   }
 }

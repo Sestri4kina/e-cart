@@ -9,7 +9,9 @@
                     <h5 class="price-info">{{ product.price[0].currency }} {{ product.price[0].amount/100  }}</h5>
                     <!-- <h5 class="normal c-grey-quaternary">{{product.description}}</h5> -->
                     <div class="text-c">
-                        <button type="button "class="btn btn-primary btn-md marg-t-sm1">
+                        <button type="button"
+                            (click)="addToCart(product.id)"
+                            class="btn btn-primary btn-md marg-t-sm1">
                             Add to cart
                         </button>
                     </div>
