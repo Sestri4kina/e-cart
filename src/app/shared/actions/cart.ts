@@ -7,9 +7,9 @@ export enum CartActionTypes {
     GetCartSuccess = '[Cart] Get Success',
     GetCartFail = '[Cart] Get Fail',
 
-    RemoveCart = '[Cart] Remove',
-    RemoveCartSuccess = '[Cart] Remove Success',
-    RemoveCartFail = '[Cart] Remove Fail',
+    ClearCart = '[Cart] Clear',
+    ClearCartSuccess = '[Cart] Clear Success',
+    ClearCartFail = '[Cart] Clear Fail',
 
     AddItem = '[Cart] Add Item to Cart',
     AddItemSuccess = '[Cart] Add Item to Cart Success',
@@ -48,20 +48,18 @@ export class GetCart implements Action {
   }
 
 /*
-* Remove Cart Actions
+* Clear Cart Actions
 */
-export class RemoveCart implements Action {
-    readonly type = CartActionTypes.RemoveCart;
+export class ClearCart implements Action {
+    readonly type = CartActionTypes.ClearCart;
 }
 
-export class RemoveCartSuccess implements Action {
-    readonly type = CartActionTypes.RemoveCartSuccess;
-
-    constructor(public payload: { removedCart: RemoveCartResponse }) {}
+export class ClearCartSuccess implements Action {
+    readonly type = CartActionTypes.ClearCartSuccess;
 }
 
-export class RemoveCartFail implements Action {
-    readonly type = CartActionTypes.RemoveCartFail;
+export class ClearCartFail implements Action {
+    readonly type = CartActionTypes.ClearCartFail;
 
     constructor(public payload: any) {}
 }
@@ -92,12 +90,14 @@ export class AddItemFail implements Action {
  */
 export class RemoveItem implements Action {
   readonly type = CartActionTypes.RemoveItem;
+
+  constructor(public payload: { itemId: string }) {}
 }
 
 export class RemoveItemSuccess implements Action {
   readonly type = CartActionTypes.RemoveItemSuccess;
 
-  constructor(public payload: { item: CartItem }) {}
+  constructor(public payload: { items: CartItems }) {}
 }
 
 export class RemoveItemFail implements Action {
@@ -151,9 +151,9 @@ export type CartActions =
     | GetCartSuccess
     | GetCartFail
 
-    | RemoveCart
-    | RemoveCartSuccess
-    | RemoveCartFail
+    | ClearCart
+    | ClearCartSuccess
+    | ClearCartFail
 
     | AddItem
     | AddItemSuccess

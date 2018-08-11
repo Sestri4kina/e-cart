@@ -1,0 +1,24 @@
+// INPUT PRIMARY
+$input-primary-default-bg: map-get($color-theme, white);
+$input-primary-default-border-color: map-get($grey, tertiary);
+$input-primary-hover-border-color: map-get($grey, tertiary);
+$input-primary-focus-border-color: map-get($primary, default);
+$input-primary-default-color: map-get($color-theme, dark);
+//INPUT SECONDARY
+$input-secondary-border-bottom-color: map-get($grey, tertiary);
+$input-secondary-focus-border-bottom-color: map-get($color-theme, primary);
+$input-secondary-placeholder-color: map-get($grey, quaternary);
+// Input primary icons
+$input-primary-default-icon-left-color: map-get($grey, quaternary);
+$input-primary-default-icon-right-color: map-get($grey, quaternary);
+$input-primary-required-icon-right-color: map-get($primary, default);
+// Input primary focus
+$input-primary-focus-icon-left-color: map-get($primary, default);
+$input-primary-focus-icon-right-color: map-get($primary, default);
+// Input primary placeholder
+$input-primary-placeholder-default-color: map-get($grey, tertiary);
+// Input primary label placeholder
+$input-primary-label-placeholder-default-color: map-get($grey, quaternary);
+$input-primary-focus-label-placeholder-default-color: map-get($primary, default);
+
+$input-quantity-border-bottom-color: map-get($color-theme, grey);

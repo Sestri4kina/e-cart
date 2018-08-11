@@ -2,7 +2,7 @@ import { Injectable, Injector } from "@angular/core";
 import { HttpInterceptor, HttpErrorResponse, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from "@angular/common/http";
 import { Observable, of, throwError} from "rxjs";
 
-import { catchError, filter, flatMap } from "rxjs/operators";
+import { catchError, retry } from "rxjs/operators";
 import { Store } from '@ngrx/store';
 import * as fromRoot from '@app/shared/reducers';
 import * as authAction from '@app/shared/actions/auth';
@@ -32,15 +32,9 @@ export class AuthInterceptor implements HttpInterceptor {
                 //handle reauth errors
                 if (err.status === 401 || err.status === 403) {
                     this.store.dispatch(new authAction.Auth());
-        
-                    this.store.select(s => s.auth)
-                        .pipe(
-                            filter(_ => !!_.hasAccessToken),
-                            flatMap(st => {
-                                console.log(st)
-                                return next.handle(req);
-                            })
-                        )
+
+                    req = this.addTokenToHeaders(req);
+                    return next.handle(req).pipe(retry(3));
                 } 
                 // handle other errors 
                 return throwError(err);

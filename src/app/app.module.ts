@@ -18,6 +18,8 @@ import { UtilsModule } from '@app/shared/services/utils/utils.module';
 import { HeaderComponent } from '@app/shared/components/header/header.component';
 import { FooterComponent } from '@app/shared/components/footer/footer.component';
 import { HomeComponent } from '@app/home/home.component';
+import { CartEffects } from '@app/shared/effects/cart';
+import { PipeModule } from '@app/shared/pipes/pipe.module';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,13 @@ import { HomeComponent } from '@app/home/home.component';
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
       AuthEffects,
-      ProductEffects
+      ProductEffects,
+      CartEffects
     ]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     RemoteAPIModule.forRoot(),
     UtilsModule.forRoot(),
+    PipeModule,
     AppRoutingModule
   ],
   providers: [

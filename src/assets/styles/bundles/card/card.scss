@@ -12,3 +12,9 @@
     padding-bottom: $card-container-padding-bottom;
     @include padding-horizontal($card-container-padding-horizontal);
 }
+
+.card-grey {
+    padding: $card-grey-pad;
+    border-radius: $card-grey-border-radius;
+    background-color: $card-grey-bg-color;
+}

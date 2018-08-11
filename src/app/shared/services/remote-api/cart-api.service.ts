@@ -22,18 +22,18 @@ export class CartAPIService {
   }
 
   addItemToCart(itemParams: ItemRequest, cartRef: string): Observable<any> {
-    return this.httpService.post(this.config.cartItemsPath(cartRef), itemParams);
+    return this.httpService.post(this.config.cartItemsPath(cartRef), { data: itemParams });
   }
 
   updateItem(itemParams: ItemRequest, cartRef: string): Observable<any> {
-    return this.httpService.put(this.config.cartItemsPath(cartRef), itemParams);
+    return this.httpService.put(this.config.cartItemsPath(cartRef), { data: itemParams });
   }
 
   removeItem(itemId: string, cartRef: string): Observable<any> {
     return this.httpService.delete(this.config.cartItemPath(cartRef, itemId));
   }
 
-  deleteCart(cartRef: string): Observable<any> {
+  clearCart(cartRef: string): Observable<any> {
     return this.httpService.delete(this.config.cartPath(cartRef));
   }
 }

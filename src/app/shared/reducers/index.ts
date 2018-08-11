@@ -23,6 +23,7 @@ import {
   
   import * as fromAuth from '@app/shared/reducers/auth.reducer';
   import * as fromProduct from '@app/shared/reducers/product.reducer';
+  import * as fromCart from '@app/shared/reducers/cart.reducer';
   /**
    * As mentioned, we treat each reducer like a table in a database. This means
    * our top level state interface is just a map of keys to inner state types.
@@ -30,6 +31,7 @@ import {
   export interface State {
     auth: fromAuth.State;
     product: fromProduct.State;
+    cart: fromCart.State;
   }
   
   /**
@@ -39,7 +41,8 @@ import {
    */
   export const reducers: ActionReducerMap<State> = {
     auth: fromAuth.reducer,
-    product: fromProduct.reducer
+    product: fromProduct.reducer,
+    cart: fromCart.reducer
   };
   
   // console.log all actions
@@ -71,4 +74,8 @@ import {
    */
   export const getProductState = createFeatureSelector<fromProduct.State>('product');
 
+  /**
+   * Cart Reducers
+   */
+  export const getCartState = createFeatureSelector<fromCart.State>('cart');
   

@@ -26,6 +26,12 @@ export class AuthEffects {
   );
 
   @Effect()
+  removeAccessToken$ = this.actions$.pipe(
+    ofType(AuthActionTypes.RemoveAccessToken),
+    map(() => new Auth())
+  );
+
+  @Effect()
   init$ = defer(() => {
     if (!this.handleToken.getToken() || (this.handleToken.getToken() && !this.handleToken.tokenIsValid)) {
       return of(new Auth());

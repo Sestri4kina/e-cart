@@ -1,0 +1,13 @@
+<div class="btn btn-group marg-b-xs">
+    <button class="btn btn-minus"
+        (click)="decrementQuantity()">
+    </button>
+    <input class="input input-quantity text-c"
+        type="text" pattern="\d*" maxlength="7"
+        [(ngModel)]="initialInput"
+        (keyup)="quantityOnChange()">
+    <button class="btn btn-plus" 
+        (click)="incrementQuantity()">
+    </button>
+</div>
+

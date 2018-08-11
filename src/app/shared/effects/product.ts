@@ -15,7 +15,7 @@ export class ProductEffects {
   getProducts$ = this.actions$.pipe(
     ofType(ProductActionTypes.Load),
     switchMap(() =>
-      this.productService
+      this.productAPIService
         .getProducts()
         .pipe(
           map((products: Products) => new LoadSuccess({ products })),
@@ -26,6 +26,6 @@ export class ProductEffects {
 
   constructor(
     private actions$: Actions,
-    private productService: ProductAPIService
+    private productAPIService: ProductAPIService
   ) {}
 }

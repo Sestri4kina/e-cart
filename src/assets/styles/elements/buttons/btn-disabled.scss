@@ -1,7 +1,7 @@
 .btn {
     &.btn-disabled,
     &[disabled] {
-        background-color: $btn-disabled-default-bg;
+        background-color: transparent;
         color: $btn-disabled-text-color;
         cursor: not-allowed;
         &:hover,

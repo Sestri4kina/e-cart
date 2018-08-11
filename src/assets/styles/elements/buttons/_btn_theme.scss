@@ -11,6 +11,8 @@ $btn-disabled-pressed-bg: map-get($disabled, default);
 
 $default-btn-color: map-get($color-theme, white);
 
+$btn-secondary-text-color: map-get($grey, tertiary);
+
 // BUTTON PRIMARY INVERSE
 $btn-primary-inverse-color: map-get($color-theme, primary);
 $btn-primary-inverse-bg: map-get($color-theme, white);

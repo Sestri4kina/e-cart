@@ -30,7 +30,10 @@ export class CartUtilsService {
     }
 
     isCartRefValid(): boolean {
-        return this.cartRefExpiresAt() < Date.now();
+        if (localStorage.getItem("cart_ref")) {
+            return this.cartRefExpiresAt() > Date.now();
+        }
+        return false;
     }
 
     removeCartReference(): void {

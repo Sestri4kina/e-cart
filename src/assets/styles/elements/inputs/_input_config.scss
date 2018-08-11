@@ -1,0 +1,14 @@
+// DEFAULT INPUT
+$default-input-border-style: solid;
+$default-input-border-width: 1px;
+$default-input-border-radius: 7px;
+$default-input-font-weight: map-get($font-weight, normal);
+$default-input-font-size: map-get($font-size, body1);
+$default-input-line-height: map-get($line-height, body1);
+$default-input-padding-top-bottom: map-get($pad-independent, xs) - 1;
+$default-input-padding-left-right: map-get($pad-paired, xs);
+$default-input-height: $default-input-line-height + $default-input-padding-top-bottom * 2 + 2; // Input with border
+$default-input-transition: all 0.15s linear;
+$default-input-min-width: 40px;
+
+

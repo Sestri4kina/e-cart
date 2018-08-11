@@ -1,5 +1,69 @@
-<div class="container">
-    <h2 class="marg-v-sm1">
-      Cart page
-    </h2>
+<div class="container" *ngIf="cartItems">
+  <div class="row justify-content-center">
+    <div class="col-12 col-xl-8 col-lg-10 col-md-12">
+        <h2 class="marg-v-sm1">
+            Cart page
+        </h2>
+
+
+        <div class="row justify-content-center marg-v-xs card-grey" *ngFor="let item of cartItems">
+            <div class="col-12 col-md-3">
+              <img [src]="item.image.href" class="img img-center" alt="product image">
+            </div>
+
+            <div class="col-12 col-md-4">
+              <h4> {{ item.name }} </h4>
+              <h5 class="normal"> {{ item.unit_price.currency | currencyFormat}} {{ item.unit_price.amount | priceFormat }} </h5>
+              <button type="button"
+                (click)="removeItem(item.id)"
+                class="btn btn-secondary text-c marg-t-xs">
+                Remove from cart <img [src]="removeIconPath" alt="remove"> 
+              </button>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <app-quantity-input [initialInput]="item.quantity"
+                  (quantity)="getQuantity($event)"></app-quantity-input>
+            </div>
+
+            <div class="col-6 col-md-2">
+                <h4 class="normal marg-v-sm2"> {{ item.value.currency | currencyFormat}} {{ item.value.amount | priceFormat }} </h4>
+            </div>
+        </div>
+
+        <div class="row justify-content-end marg-v-sm1">
+            <div class="col-4">
+              <div class="float-r">
+                  <h4 class="text-upper">Total: 5000 USD</h4>
+              </div>
+            </div>
+        </div>
+
+        <!-- CONTROL BUTTONS-->
+        <div class="row justify-content-center marg-v-xs">
+            <div class="col-12">
+              <div class="float-l">
+                <button type="button"
+                  (click)="clearCart()"
+                  class="btn btn-primary-inverse btn-md">
+                  Clear cart
+                </button>
+
+                <a [routerLink]="'/home'"
+                  class="btn btn-primary-inverse btn-md">
+                  Continue shopping
+                </a>
+                
+              </div>
+
+              <div class="float-r">
+                <button type="submit"
+                  class="btn btn-primary btn-md">
+                  Buy
+                </button>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
 </div>
