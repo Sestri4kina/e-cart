@@ -5,8 +5,8 @@ import * as fromRoot from '@app/shared/reducers';
 import * as productAction from '@app/shared/actions/product';
 import * as cartAction from '@app/shared/actions/cart';
 
-import { filter, takeUntil } from "rxjs/operators";
-import { Product, ProductWithImage } from '@app/shared/models/product';
+import { filter, takeUntil, flatMap, take } from "rxjs/operators";
+import { ProductWithImage } from '@app/shared/models/product';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { ProductUtilsService } from '@app/shared/services/utils/product-utils.service';
 import { ItemRequest } from '@app/shared/models/cart';
@@ -41,15 +41,18 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   initProducts() {
-    this.store.dispatch(new productAction.Load());
-
-    this.store.select(s => s.product)
+    this.store.select(state => state.auth)
       .pipe(
+        filter(_ => !!_.hasAccessToken),
+        flatMap(_ => {
+          this.store.dispatch(new productAction.Load());
+
+          return this.store.select(state => state.product);
+        }),
         filter(_ => !!_.products),
         takeUntil(this.unsubscribe$)
       )
       .subscribe((productState) => {
-        console.log(productState);
         this.products = this.productUtilsService.composeProductArray(productState.products.data, productState.products.included.main_images);
         console.log(this.products);
       });

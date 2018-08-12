@@ -1,8 +1,8 @@
 import { Injectable, Injector } from "@angular/core";
-import { HttpInterceptor, HttpErrorResponse, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from "@angular/common/http";
-import { Observable, of, throwError} from "rxjs";
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
+import { Observable, throwError} from "rxjs";
 
-import { catchError, retry } from "rxjs/operators";
+import { catchError } from "rxjs/operators";
 import { Store } from '@ngrx/store';
 import * as fromRoot from '@app/shared/reducers';
 import * as authAction from '@app/shared/actions/auth';
@@ -14,15 +14,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
     constructor(
         private injector: Injector,
-        private store: Store<fromRoot.State>
+        private store: Store<fromRoot.State>,
     ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log(req);
-        if (this.getToken() && this.tokenIsValid()) {
+        if (this.getToken() && this.tokenIsValid() && this.isNotAuthPath(req.url)) {
             req = this.addTokenToHeaders(req);
-        } else if (this.getToken() && !this.tokenIsValid()) {
-            this.store.dispatch(new authAction.RemoveAccessToken());
         } 
 
         return next.handle(req).pipe( 
@@ -33,7 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     this.store.dispatch(new authAction.Auth());
 
                     req = this.addTokenToHeaders(req);
-                    return next.handle(req).pipe(retry(5));
+                    return next.handle(req);
                 } 
                 // handle other errors 
                 return throwError(err);
@@ -49,6 +47,10 @@ export class AuthInterceptor implements HttpInterceptor {
                 Authorization: `Bearer ${accessToken}`
             }
         })
+    }
+
+    isNotAuthPath(url: string): boolean {
+        return url !== "https://api.moltin.com/oauth/access_token";
     }
 
     private getToken() {

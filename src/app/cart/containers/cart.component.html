@@ -4,7 +4,13 @@
         <h2 class="marg-v-sm2">
             Cart
         </h2>
+        <div *ngIf="!cartItems.length">
+            <h4 class="normal">
+                The cart is empty.
+            </h4>
+        </div>
 
+        <div *ngIf="cartItems.length">
         <div class="row justify-content-center marg-v-xs card-grey" *ngFor="let item of cartItems">
             <div class="col-12 col-md-3">
               <img [src]="item.image.href" class="img img-center" alt="product image">
@@ -91,6 +97,8 @@
             </div>
           </div>   
         </div>
+
+      </div>
     </div>
   </div>
 </div>

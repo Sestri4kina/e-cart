@@ -21,6 +21,7 @@ import { HomeComponent } from '@app/home/home.component';
 import { CartEffects } from '@app/shared/effects/cart';
 import { PipeModule } from '@app/shared/pipes/pipe.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,

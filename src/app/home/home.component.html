@@ -1,6 +1,6 @@
 <div class="container" *ngIf="products">
-    <div class="row">
-        <div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-9">
             <h2 class="marg-t-sm1">
                 Products
             </h2>
@@ -13,8 +13,10 @@
                     class="product-image">
                 <div class="card-container">
                     <h5>{{ product.name }}</h5>
-                    <h5 class="price-info">{{ product.price[0].currency }} {{ product.price[0].amount/100  }}</h5>
-                    <!-- <h5 class="normal c-grey-quaternary">{{product.description}}</h5> -->
+                    <h5 class="price-info">
+                        {{ product.price[0].currency |currencyFormat }} 
+                        {{ product.price[0].amount | priceFormat  }}
+                    </h5>
                     <div class="text-c">
                         <button type="button"
                             (click)="addToCart(product.id)"
