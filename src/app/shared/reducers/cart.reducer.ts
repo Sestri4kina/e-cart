@@ -36,7 +36,7 @@ export function reducer(state = initialState, action: CartActions): State {
             };
         }
 
-        case CartActionTypes.LoadItems: {
+        case CartActionTypes.LoadCartItems: {
             return {
               ...state,
               error: null,
@@ -44,7 +44,7 @@ export function reducer(state = initialState, action: CartActions): State {
             };
         }
 
-        case CartActionTypes.LoadItemsSuccess: {
+        case CartActionTypes.LoadCartItemsSuccess: {
             return {
               ...state,
               cartItems: action.payload.items,
@@ -82,12 +82,22 @@ export function reducer(state = initialState, action: CartActions): State {
               cartItems: updatedCartItems
             };
         }
+
+        case CartActionTypes.UpdateItemSuccess: {
+            return {
+              ...state,
+              error: null,
+              isLoading: false,
+              cartItems: action.payload.items
+            };
+        }
       
-        case CartActionTypes.LoadItemsFail: 
+        case CartActionTypes.LoadCartItemsFail: 
         case CartActionTypes.GetCartFail:
         case CartActionTypes.AddItemFail:
         case CartActionTypes.RemoveItemFail:
         case CartActionTypes.ClearCartFail:
+        case CartActionTypes.UpdateItemFail:
         {
             return {
                 ...state,

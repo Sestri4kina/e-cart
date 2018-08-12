@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '@app/shared/reducers';
 import * as cartAction from '@app/shared/actions/cart';
 import { CartUtilsService } from '@app/shared/services/utils/cart-utils.service';
-import { CartItem } from '@app/shared/models/cart';
+import { CartItem, ItemRequest } from '@app/shared/models/cart';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { filter, takeUntil, flatMap } from 'rxjs/operators';
 
@@ -15,6 +15,8 @@ import { filter, takeUntil, flatMap } from 'rxjs/operators';
 export class CartComponent extends BaseComponent implements OnInit {
   cartItems: Array<CartItem>;
   removeIconPath: string = "assets/images/icons/remove.svg";
+  total: string;
+
 
   constructor(
     private store: Store<fromRoot.State>,
@@ -24,15 +26,14 @@ export class CartComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Inside cart comp");
-
-    this.getCartItems();
+    this.initCartItems();
   }
 
-  getCartItems() {
+// load cart items
+  initCartItems() {
     if ( this.cartUtilsService.isCartRefValid() ) {
       
-      this.store.dispatch(new cartAction.LoadItems());
+      this.store.dispatch(new cartAction.LoadCartItems());
 
       this.store.select(state => state.cart)
         .pipe(
@@ -42,7 +43,7 @@ export class CartComponent extends BaseComponent implements OnInit {
         .subscribe(cartState => {
           console.log(cartState);
           this.cartItems = cartState.cartItems.data;
-
+          this.total = cartState.cartItems.meta.display_price.with_tax.formatted;
         })
 
     } else {
@@ -55,7 +56,7 @@ export class CartComponent extends BaseComponent implements OnInit {
           flatMap(_cartState => {
             console.log(_cartState);
 
-            this.store.dispatch(new cartAction.LoadItems());
+            this.store.dispatch(new cartAction.LoadCartItems());
             return this.store.select(state => state.cart.cartItems)
           }),
           takeUntil(this.unsubscribe$),
@@ -66,15 +67,23 @@ export class CartComponent extends BaseComponent implements OnInit {
       }
   }
 
+// update items's quantity in cart
+  getQuantity(newQuantity: number, itemId: string) {
+    let itemParams: ItemRequest = {
+      quantity: newQuantity,
+      id: itemId,
+      type: "cart_item"
+    };
 
-  getQuantity(newQuantity) {
-    console.log(newQuantity);
+    this.store.dispatch(new cartAction.UpdateItem({ itemParams }));
   }
 
+// remove all items from cart
   clearCart() {
     this.store.dispatch(new cartAction.ClearCart());
   }
 
+// remove specific item from cart
   removeItem(itemId) {
     this.store.dispatch(new cartAction.RemoveItem(itemId));
   }

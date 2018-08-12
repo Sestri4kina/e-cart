@@ -26,22 +26,17 @@ export class GenericHttpService {
   postFormData(path: string, formData): Observable<any> {
     const fullPath: string = `${this.apiPath}/${path}`;
     let headers = new HttpHeaders();
-    headers = headers.set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    headers = headers.set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
 
     return this.http.post(fullPath, formData, { headers });
-  }
-
-  patch(path: string, params: Object = {}) {
-    const fullPath: string = `${this.apiPath}/${path}`;
-
-    return this.http.patch(fullPath, params);
   }
 
   get(path: string, searchParams: Object = {}): Observable<any> {
     const fullPath: string = `${this.apiPath}/${path}`;
     let params = new HttpParams();
     let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Accept', 'application/json');
+    headers = headers.set("Content-Type", "application/json; charset=utf-8")
+                    .set("Accept", "application/json");
     
     Object.keys(searchParams).forEach(key => {
       params = params.append(key, searchParams[key]);
@@ -52,18 +47,15 @@ export class GenericHttpService {
 
   put(path: string, body: Object = {}): Observable<any> {
     const fullPath: string = `${this.apiPath}/${path}`;
-    let headers = new HttpHeaders();
-    headers = headers.set("Content-Type", "application/json; charset=utf-8")
-                    .set('Accept', 'application/json');
-
-    return this.http.put(fullPath, body, { headers });
+   
+    return this.http.put(fullPath, body);
   }
 
   delete(path: string): Observable<any> {
     const fullPath: string = `${this.apiPath}/${path}`;
     let headers = new HttpHeaders();
     headers = headers.set("Content-Type", "application/json; charset=utf-8")
-                    .set('Accept', 'application/json');
+                    .set("Accept", "application/json");
 
     return this.http.delete(fullPath, { headers });
   }

@@ -14,6 +14,11 @@ export interface DisplayPrice {
     }
 }
 
+export interface CartDisplayPrice {
+    with_tax: FormattedPrice;
+    without_tax: FormattedPrice;
+}
+
 export interface FormattedPrice {
     amount: number;
     currency: string;

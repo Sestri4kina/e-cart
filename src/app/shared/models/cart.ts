@@ -1,4 +1,4 @@
-import { Timestamps, DisplayPrice, Price } from "@app/shared/models/shared";
+import { Timestamps, DisplayPrice, Price, CartDisplayPrice } from "@app/shared/models/shared";
 
 export interface ItemRequest {
     quantity: number;
@@ -45,14 +45,7 @@ export interface CartItem {
 }
 
 export interface Meta {
-    display_price: DisplayPrice;
+    display_price: CartDisplayPrice;
     timestamps: Timestamps;
-}
-
-export interface RemoveCartResponse {
-    data: {
-        type: "cart";
-        id: string;
-    }
 }
 

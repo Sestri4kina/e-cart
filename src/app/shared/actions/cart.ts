@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Cart, ItemRequest, RemoveCartResponse, CartItems, CartItem } from '@app/shared/models/cart';
+import { Cart, ItemRequest, CartItems } from '@app/shared/models/cart';
 
 
 export enum CartActionTypes {
@@ -23,9 +23,9 @@ export enum CartActionTypes {
     UpdateItemSuccess = '[Cart] Update Item Success',
     UpdateItemFail = '[Cart] Update Item Fail',
 
-    LoadItems = '[Cart] Load Cart Items',
-    LoadItemsSuccess = '[Cart] Load Success',
-    LoadItemsFail = '[Cart] Load Fail',
+    LoadCartItems = '[Cart] Load Cart Items',
+    LoadCartItemsSuccess = '[Cart] Load Success',
+    LoadCartItemsFail = '[Cart] Load Fail',
 }
 
 /*
@@ -118,7 +118,7 @@ export class UpdateItem implements Action {
 export class UpdateItemSuccess implements Action {
     readonly type = CartActionTypes.UpdateItemSuccess;
 
-    constructor(public payload: { item:  CartItem }) {}
+    constructor(public payload: { items:  CartItems }) {}
 }
 
 export class UpdateItemFail implements Action {
@@ -130,18 +130,18 @@ export class UpdateItemFail implements Action {
 /*
  * Load Items Actions
  */
-export class LoadItems implements Action {
-  readonly type = CartActionTypes.LoadItems;
+export class LoadCartItems implements Action {
+  readonly type = CartActionTypes.LoadCartItems;
 }
 
-export class LoadItemsSuccess implements Action {
-  readonly type = CartActionTypes.LoadItemsSuccess;
+export class LoadCartItemsSuccess implements Action {
+  readonly type = CartActionTypes.LoadCartItemsSuccess;
 
   constructor(public payload: { items:  CartItems }) {}
 }
 
-export class LoadItemsFail implements Action {
-  readonly type = CartActionTypes.LoadItemsFail;
+export class LoadCartItemsFail implements Action {
+  readonly type = CartActionTypes.LoadCartItemsFail;
 
   constructor(public payload: any) {}
 }
@@ -167,6 +167,6 @@ export type CartActions =
     | UpdateItemSuccess
     | UpdateItemFail
 
-    | LoadItems
-    | LoadItemsSuccess
-    | LoadItemsFail;
+    | LoadCartItems
+    | LoadCartItemsSuccess
+    | LoadCartItemsFail;
