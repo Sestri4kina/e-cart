@@ -14,7 +14,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
     constructor(
         private injector: Injector,
-        private handleToken: HandleTokenService,
         private store: Store<fromRoot.State>
     ) {}
 
@@ -34,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     this.store.dispatch(new authAction.Auth());
 
                     req = this.addTokenToHeaders(req);
-                    return next.handle(req).pipe(retry(3));
+                    return next.handle(req).pipe(retry(5));
                 } 
                 // handle other errors 
                 return throwError(err);

@@ -12,13 +12,19 @@
           <a class="header-nav-item header-nav-item-primary" 
             routerLink="/cart"
             routerLinkActive="active">
-           Cart
+           Cart 
+           <span class="cart-badge" *ngIf="cartItems && cartItems.length">
+              {{ numberOfProductsInCart }}
+           </span>
           </a>
         </nav>
 
         <!-- SIDEBAR: SMALL SCREENS -->
         <div class="burger-button" (click)="toggleSidebar()">
-          <img [src]="burgerMenuPath" />
+          <img [src]="burgerMenuPath" />  
+          <span class="cart-badge" *ngIf="cartItems && cartItems.length">
+              {{ numberOfProductsInCart }}
+          </span>
         </div>
 
         <div class="header-nav header-nav--mobile" [ngClass]="{show: isSidebarOpen}">

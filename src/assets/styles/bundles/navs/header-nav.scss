@@ -12,55 +12,6 @@
             text-decoration: $header-nav-item-hover-text-decoration;
         }
     }
-
-    &-account {
-        position: relative;
-        //height: 36px;
-        margin-top: 0;
-        @include padding-vertical($header-nav-account-padding-vertical);
-        @include padding-horizontal($header-nav-item-padding-horizontal);
-        @extend .d-none;
-        @extend .md-d-inline-block;
-        &:hover {
-            text-decoration: $header-nav-item-hover-text-decoration;
-        }
-        &-img {
-            width: auto;
-            height: 20px;
-            display: block;
-            padding-bottom: 0;
-            margin-bottom: 0;
-            background-image: url("/assets/images/icons/account/account.svg");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center; 
-            &.active {
-                background-image: url("/assets/images/icons/account/account_active.svg");
-            }
-            &:hover {
-                background-image: url("/assets/images/icons/account/account_active.svg");
-            }
-        }
-
-        &-text {
-            position: absolute;
-            bottom: -24px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            @include font-size($header-nav-account-font-size);
-            @include line-height($header-nav-account-line-height);
-            &.active {
-                color: $header-nav-item-active-color;
-                font-weight: bold;
-            }
-            &:hover {
-                color: $header-nav-item-active-color;
-                font-weight: bold;
-                text-decoration: $header-nav-item-hover-text-decoration; 
-            }
-        }
-    }
-    
     &--mobile {
         position: fixed;
         bottom: 0;
@@ -85,4 +36,17 @@
     @extend .float-r;
     @extend .md-d-none;
     @include padding-vertical($burger-padding-top-bottom);
+}
+
+.cart-badge {
+    background-color: $cart-badge-bg;
+    color: $cart-badge-color;
+    text-align: center;
+    vertical-align: middle; 
+    display: inline-block;
+    border-radius: 50%;
+    width: $cart-badge-width-height;
+    height: $cart-badge-width-height;
+    line-height: $cart-badge-width-height;
+    @include font-size($cart-badge-font-size);
 }

@@ -13,13 +13,14 @@ $table-cell-padding:          .75rem !default;
 
 //// Border radius
 $border-radius: (
-    fixit: 0px,
     xs: 4px,
     sm: 8px,
     md: 12px,
     lg: 16px,
     xl: 20px
 );
+
+$cart-badge-width-height: 18px;
 
 // Root (Document.scss variables)
 $root-font-family:            'Work Sans', sans-serif;

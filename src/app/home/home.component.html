@@ -1,6 +1,13 @@
 <div class="container" *ngIf="products">
-    <div class="row justify-content-center marg-v-sm2">
-        <div class="col-12 col-xl-3 col-lg-4 col-md-4 col-sm-6"  *ngFor="let product of products">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="marg-t-sm1">
+                Products
+            </h2>
+        </div>
+    </div>    
+    <div class="row justify-content-center marg-v-xs">
+        <div class="col-12 col-xl-3 col-lg-4 col-md-4 col-sm-6 marg-v-xs"  *ngFor="let product of products">
             <div class="image-card image-card-container">
                 <img [src]="product.imageData.link.href"
                     class="product-image">
