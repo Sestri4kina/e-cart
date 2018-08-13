@@ -37,7 +37,6 @@ export class HeaderComponent extends BaseComponent implements OnInit {
         filter(_ => !!_.hasAccessToken),
         flatMap(_ => {
           this.store.dispatch(new cartAction.LoadCartItems());
-
           return this.store.select(state => state.cart);
         }),
         filter(_ => !!_.cartItems),
@@ -46,9 +45,8 @@ export class HeaderComponent extends BaseComponent implements OnInit {
       .subscribe(cartState => {
           console.log(cartState);
           this.cartItems = cartState.cartItems.data;
-          this.numberOfProductsInCart = this.cartItems.reduce((sum: number, item: CartItem) => {
-            return sum + item.quantity;
-          }, 0)
+          this.numberOfProductsInCart = this.cartItems
+                                            .reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
         },
         err => {
           console.log(err);

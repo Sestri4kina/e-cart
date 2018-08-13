@@ -30,7 +30,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
     this.initProducts();
   }
 
-  addToCart(itemId) {
+  addToCart(itemId: string) {
     const itemParams: ItemRequest = {
       quantity: 1,
       type: "cart_item",
@@ -57,5 +57,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
         console.log(this.products);
       });
   }
+
 
 }

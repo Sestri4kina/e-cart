@@ -7,12 +7,11 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
   })
   export class QuantityInputComponent {
       @Output() quantity = new EventEmitter<number>();
-      @Input() initialInput: number;
-      //_quantity: number = 1;
+      @Input() initialQuantity: number;
 
       quantityOnChange() {
-        if (this.initialInput >= 1) {
-          this.quantity.emit(this.initialInput);
+        if (this.initialQuantity >= 1) {
+          this.quantity.emit(this.initialQuantity);
         } else {
           this.quantity.emit(null);
           return;
@@ -20,14 +19,14 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
       }
     
       incrementQuantity() {
-        this.initialInput++;
-        this.quantity.emit(this.initialInput);
+        this.initialQuantity++;
+        this.quantity.emit(this.initialQuantity);
       }
     
       decrementQuantity() {
-        if (this.initialInput > 1) {
-          this.initialInput--;
-          this.quantity.emit(this.initialInput);
+        if (this.initialQuantity > 1) {
+          this.initialQuantity--;
+          this.quantity.emit(this.initialQuantity);
         } 
         return;
       }

@@ -35,13 +35,13 @@ export class AuthEffects {
 
   @Effect()
   init$ = defer(() => {
-    if (!this.handleToken.getToken()) {
+    if (!this.handleToken.isToken()) {
       return of(new Auth());
-    } else if ((this.handleToken.getToken() && !this.handleToken.tokenIsValid())) {
-      return of(new RemoveAccessToken());
-    } else if (this.handleToken.getToken() && this.handleToken.tokenIsValid()) {
+    } else if (this.handleToken.tokenIsValid()) {
       return of(new SetAccessToken());
-    }
+    } else if (!this.handleToken.tokenIsValid()) {
+      return of(new RemoveAccessToken());
+    } 
   });
 
   constructor(

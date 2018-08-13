@@ -4,7 +4,7 @@
     </button>
     <input class="input input-quantity text-c"
         type="text" pattern="\d*" maxlength="7"
-        [(ngModel)]="initialInput"
+        [(ngModel)]="initialQuantity"
         (keyup)="quantityOnChange()">
     <button class="btn btn-plus" 
         (click)="incrementQuantity()">

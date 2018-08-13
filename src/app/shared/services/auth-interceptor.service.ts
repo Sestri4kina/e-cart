@@ -1,25 +1,24 @@
-import { Injectable, Injector } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
 import { Observable, throwError} from "rxjs";
 
 import { catchError } from "rxjs/operators";
-import { Store } from '@ngrx/store';
-import * as fromRoot from '@app/shared/reducers';
-import * as authAction from '@app/shared/actions/auth';
 import { HandleTokenService } from "@app/shared/services/utils/handle-token.service";
+import { AuthAPIService } from "@app/shared/services/remote-api/auth-api.service";
 
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
     constructor(
-        private injector: Injector,
-        private store: Store<fromRoot.State>,
+        private handleTokenService: HandleTokenService,
+        private authAPIService: AuthAPIService,
+        @Inject('window') private _window: Window,
     ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log(req);
-        if (this.getToken() && this.tokenIsValid() && this.isNotAuthPath(req.url)) {
+        if (this.tokenIsValid() && this.isNotAuthPath(req.url)) {
             req = this.addTokenToHeaders(req);
         } 
 
@@ -27,11 +26,13 @@ export class AuthInterceptor implements HttpInterceptor {
             catchError(err => {
                 console.log(err.message);
                 //handle reauth errors
-                if (err.status === 401 || err.status === 403) {
-                    this.store.dispatch(new authAction.Auth());
-
-                    req = this.addTokenToHeaders(req);
-                    return next.handle(req);
+                if ( err.status === 401 ) {
+                    this.authAPIService.getAccessToken()
+                        .subscribe(accessToken => {
+                            this.handleTokenService.persistToken(accessToken);
+                            //hacky-hacky way
+                            this._window.location.reload();
+                        })
                 } 
                 // handle other errors 
                 return throwError(err);
@@ -40,7 +41,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     
     private addTokenToHeaders(req) {
-        const accessToken = this.getToken().access_token;
+        const accessToken = this.getToken();
         
         return req.clone({
             setHeaders: {
@@ -53,12 +54,12 @@ export class AuthInterceptor implements HttpInterceptor {
         return url !== "https://api.moltin.com/oauth/access_token";
     }
 
-    private getToken() {
-        return this.injector.get(HandleTokenService).getToken();
+    private getToken(): string {
+        return this.handleTokenService.getToken();
     }
 
-    private tokenIsValid() {
-        return this.injector.get(HandleTokenService).tokenIsValid();
+    private tokenIsValid(): boolean {
+        return this.handleTokenService.tokenIsValid();
     }
 
 }

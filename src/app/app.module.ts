@@ -21,6 +21,9 @@ import { HomeComponent } from '@app/home/home.component';
 import { CartEffects } from '@app/shared/effects/cart';
 import { PipeModule } from '@app/shared/pipes/pipe.module';
 
+export function windowFactory() {
+  return window;
+}
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { PipeModule } from '@app/shared/pipes/pipe.module';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: 'window', useFactory: windowFactory
     }
   ],
   bootstrap: [AppComponent]

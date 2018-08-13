@@ -68,7 +68,7 @@ export class CartComponent extends BaseComponent implements OnInit {
   }
 
 // update items's quantity in cart
-  getQuantity(newQuantity: number, itemId: string) {
+  updateQuantity(newQuantity: number, itemId: string) {
     let itemParams: ItemRequest = {
       quantity: newQuantity,
       id: itemId,
@@ -84,8 +84,8 @@ export class CartComponent extends BaseComponent implements OnInit {
   }
 
 // remove specific item from cart
-  removeItem(itemId) {
-    this.store.dispatch(new cartAction.RemoveItem(itemId));
+  removeItem(itemId: string) {
+    this.store.dispatch(new cartAction.RemoveItem({ itemId }));
   }
 
 }

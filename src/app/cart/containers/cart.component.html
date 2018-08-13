@@ -27,8 +27,8 @@
             </div>
 
             <div class="col-6 col-md-3">
-                <app-quantity-input [initialInput]="item.quantity"
-                  (quantity)="getQuantity($event, item.id)"></app-quantity-input>
+                <app-quantity-input [initialQuantity]="item.quantity"
+                  (quantity)="updateQuantity($event, item.id)"></app-quantity-input>
             </div>
 
             <div class="col-6 col-md-2">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <!-- CONTROL BUTTONS-->
+        <!-- CONTROL BUTTONS: NOT SMALL SCREENS LAYOUT-->
         <div class="row justify-content-center">
             <div class="col-12 hide-small pad-t-sm1 pad-b-md1">
               <div class="float-l">
@@ -72,6 +72,7 @@
             </div>
         </div>
 
+        <!-- CONTROL BUTTONS: SMALL SCREENS LAYOUT-->
         <div class="row justify-content-center">
           <div class="show-sm-and-smaller">
             <div class="col-12 text-c pad-t-xs marg-v-xs">

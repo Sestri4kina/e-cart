@@ -66,7 +66,7 @@ export class CartEffects {
     @Effect()
     removeItem$ = this.actions$.pipe(
         ofType(CartActionTypes.RemoveItem),
-        map((action: RemoveItem) => action.payload),
+        map((action: RemoveItem) => action.payload.itemId),
         switchMap((itemId: string) => {
             return this.cartAPIService
                         .removeItem(itemId, this.cartRef)

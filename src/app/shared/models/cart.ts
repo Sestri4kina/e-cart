@@ -1,4 +1,4 @@
-import { Timestamps, DisplayPrice, Price, CartDisplayPrice } from "@app/shared/models/shared";
+import { Timestamps, Price, CartDisplayPrice } from "@app/shared/models/shared";
 
 export interface ItemRequest {
     quantity: number;
