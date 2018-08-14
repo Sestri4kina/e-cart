@@ -5,8 +5,8 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '@app/shared/reducers';
 import * as cartAction from '@app/shared/actions/cart';
-
 import { filter, takeUntil, flatMap } from 'rxjs/operators';
+
 import { CartItem } from '@app/shared/models/cart';
 
 
@@ -15,6 +15,7 @@ import { CartItem } from '@app/shared/models/cart';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
+  
   isSidebarOpen: boolean = false;
   burgerMenuPath = "/assets/images/menu_mob.svg";
   cartItems: Array<CartItem>;

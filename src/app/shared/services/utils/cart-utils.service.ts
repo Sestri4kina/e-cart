@@ -1,43 +1,67 @@
 import { Injectable } from "@angular/core";
 import { ConfigService } from "@app/shared/config/config.service";
 
+
+interface CartReference {
+    value: string;
+    created_at: number;
+    modified_at: number;
+}
+
 @Injectable()
 export class CartUtilsService {
+    timeCartIsValid: number;
+
     constructor(
         private config: ConfigService
-    ) {}
+    ) {
+        this.timeCartIsValid = this.config.timeCartIsValid;
+    }
 
-    generateCartReference(): string {
+    generateCartRefValue(): string {
         return (Math.random() * Math.pow(10, 16)).toString(36);
     }
 
-    persistCartReference(cartRef: string): void {
-        const expiresAt = Date.now() + this.config.timeCartIsValid;
-        const cartReference = {
-            cartRef,
-            expiresAt 
+    createCartRef(): void {
+        const created_at = Date.now(), 
+            modified_at = Date.now(),
+            value = this.generateCartRefValue();
+
+        const cartReference: CartReference = {
+            value,
+            created_at,
+            modified_at
         };
 
         localStorage.setItem("cart_ref", JSON.stringify(cartReference));
     }
 
-    cartRef(): string {
-        return JSON.parse(localStorage.getItem("cart_ref")).cartRef;
+    updateCartRef(): void {
+        let cartReference = this.cartRefObject();
+
+        cartReference = { ...cartReference, modified_at: Date.now() };
+        localStorage.setItem("cart_ref", JSON.stringify(cartReference));
     }
 
-    cartRefExpiresAt(): number {
-        return JSON.parse(localStorage.getItem("cart_ref")).expiresAt;
+    cartRef(): string {
+        return (JSON.parse(localStorage.getItem("cart_ref")) as CartReference).value;
     }
 
     isCartRefValid(): boolean {
-        if (localStorage.getItem("cart_ref")) {
-            return this.cartRefExpiresAt() > Date.now();
+        if (!!this.cartRefObject()) {
+            const cartReference = this.cartRefObject();
+
+            const modified_at = cartReference.modified_at;
+            const now = Date.now();
+
+            return now - modified_at < this.timeCartIsValid;
         }
         return false;
     }
 
-    removeCartReference(): void {
-        localStorage.removeItem("cart_ref");
+
+    cartRefObject(): CartReference {
+        return JSON.parse(localStorage.getItem("cart_ref"));
     }
 
 }

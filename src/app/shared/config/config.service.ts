@@ -16,5 +16,7 @@ export class ConfigService {
     cartItemsPath = (cartRef: string) => `v2/carts/${cartRef}/items`;
     cartItemPath = (cartRef: string, itemId: string) => `v2/carts/${cartRef}/items/${itemId}`;
 
-    timeCartIsValid: number = 6 * 24 * 60 * 60 * 1000;
+    // cart reference is valid for 7 days since last update
+    // 7 days minus 5 minutes
+    timeCartIsValid: number = 7 * 24 * 60 * 60 * 1000 - 5 * 60 * 1000 ; 
 }

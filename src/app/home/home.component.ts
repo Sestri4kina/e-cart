@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '@app/shared/components/base/base.component';
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from '@app/shared/reducers';
 import * as productAction from '@app/shared/actions/product';
 import * as cartAction from '@app/shared/actions/cart';
+import { filter, takeUntil, flatMap } from "rxjs/operators";
 
-import { filter, takeUntil, flatMap, take } from "rxjs/operators";
-import { ProductWithImage } from '@app/shared/models/product';
-import { BaseComponent } from '@app/shared/components/base/base.component';
 import { ProductUtilsService } from '@app/shared/services/utils/product-utils.service';
+
+import { ProductWithImage } from '@app/shared/models/product';
 import { ItemRequest } from '@app/shared/models/cart';
 
 @Component({
@@ -46,7 +47,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
         filter(_ => !!_.hasAccessToken),
         flatMap(_ => {
           this.store.dispatch(new productAction.Load());
-
           return this.store.select(state => state.product);
         }),
         filter(_ => !!_.products),
@@ -57,6 +57,5 @@ export class HomeComponent extends BaseComponent implements OnInit {
         console.log(this.products);
       });
   }
-
 
 }

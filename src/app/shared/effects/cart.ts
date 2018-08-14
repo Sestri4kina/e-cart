@@ -7,10 +7,12 @@ import { CartActionTypes, LoadCartItemsSuccess, LoadCartItemsFail,
     GetCartSuccess, GetCartFail, 
     AddItemSuccess, AddItemFail, AddItem, 
     RemoveItem, RemoveItemSuccess, RemoveItemFail, 
-    ClearCartSuccess, ClearCartFail, ClearCart, UpdateItem, UpdateItemSuccess, UpdateItemFail } from '@app/shared/actions/cart';
+    ClearCartSuccess, ClearCartFail, ClearCart, UpdateItem, UpdateItemSuccess, UpdateItemFail, GetCart } from '@app/shared/actions/cart';
 import { CartAPIService } from '@app/shared/services/remote-api/cart-api.service';
 import { CartUtilsService } from '@app/shared/services/utils/cart-utils.service';
 import { CartItems, Cart, ItemRequest } from '@app/shared/models/cart';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '@app/shared/reducers';
 
 
 
@@ -26,7 +28,10 @@ export class CartEffects {
             return this.cartAPIService
                         .getCart(this.cartRef)
                         .pipe(
-                            map((cart: Cart) => new GetCartSuccess({ cart })),
+                            map((cart: Cart) => {
+                                this.cartUtilsService.updateCartRef();
+                                return new GetCartSuccess({ cart })
+                            }),
                             catchError(error => of(new GetCartFail(error)))
                         )
             }
@@ -48,6 +53,20 @@ export class CartEffects {
     );
 
     @Effect()
+    clearCart$ = this.actions$.pipe(
+        ofType(CartActionTypes.ClearCart),
+        switchMap(() => {
+            return this.cartAPIService
+                        .clearCart(this.cartRef)
+                        .pipe(
+                            map(() => new ClearCartSuccess()),
+                            catchError(error => of(new ClearCartFail(error)))
+                        )
+            }
+        )
+    );
+
+    @Effect()
     addItemToCart$ = this.actions$.pipe(
         ofType(CartActionTypes.AddItem),
         map((action: AddItem) => action.payload.itemParams),
@@ -55,7 +74,10 @@ export class CartEffects {
             return this.cartAPIService
                         .addItemToCart(itemParams, this.cartRef)
                         .pipe(
-                            map((items: CartItems) => new AddItemSuccess({ items })),
+                            map((items: CartItems) => {
+                                this.cartUtilsService.updateCartRef();
+                                return new AddItemSuccess({ items })
+                            }),
                             catchError(error => of(new AddItemFail(error)))
                         )
             }
@@ -71,22 +93,11 @@ export class CartEffects {
             return this.cartAPIService
                         .removeItem(itemId, this.cartRef)
                         .pipe(
-                            map((items: CartItems) => new RemoveItemSuccess({ items })),
+                            map((items: CartItems) => {
+                                this.cartUtilsService.updateCartRef();
+                                return new RemoveItemSuccess({ items })
+                            }),
                             catchError(error => of(new RemoveItemFail(error)))
-                        )
-            }
-        )
-    );
-
-    @Effect()
-    clearCart$ = this.actions$.pipe(
-        ofType(CartActionTypes.ClearCart),
-        switchMap(() => {
-            return this.cartAPIService
-                        .clearCart(this.cartRef)
-                        .pipe(
-                            map(() => new ClearCartSuccess()),
-                            catchError(error => of(new ClearCartFail(error)))
                         )
             }
         )
@@ -101,7 +112,10 @@ export class CartEffects {
             return this.cartAPIService
                         .updateItem(itemParams, this.cartRef)
                         .pipe(
-                            map((items: CartItems) => new UpdateItemSuccess({ items })),
+                            map((items: CartItems) => {
+                                this.cartUtilsService.updateCartRef();
+                                return new UpdateItemSuccess({ items })
+                            }),
                             catchError(error => of(new UpdateItemFail(error)))
                         )
             }
@@ -112,15 +126,14 @@ export class CartEffects {
         private actions$: Actions,
         private cartAPIService: CartAPIService,
         private cartUtilsService: CartUtilsService,
+        private store: Store<fromRoot.State>
     ) {
         this.isCartRefValid = this.cartUtilsService.isCartRefValid();
-
-        if (this.isCartRefValid) {
-            this.cartRef = this.cartUtilsService.cartRef();
-        } else {
-            this.cartRef = this.cartUtilsService.generateCartReference();
-            this.cartUtilsService.persistCartReference(this.cartRef);
+     
+        if (!this.isCartRefValid) {
+            this.cartUtilsService.createCartRef();
         }
+        this.cartRef = this.cartUtilsService.cartRef();
     }
 
 }
