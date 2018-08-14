@@ -108,7 +108,6 @@ export class CartEffects {
         ofType(CartActionTypes.UpdateItem),
         map((action: UpdateItem) => action.payload.itemParams),
         switchMap((itemParams: ItemRequest) => {
-            console.log(itemParams);
             return this.cartAPIService
                         .updateItem(itemParams, this.cartRef)
                         .pipe(

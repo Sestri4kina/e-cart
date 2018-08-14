@@ -39,9 +39,12 @@ export class CartComponent extends BaseComponent implements OnInit {
 				takeUntil(this.unsubscribe$)
 			)
 			.subscribe(cartState => {
-				console.log(cartState);
+				//console.log(cartState);
 				this.cartItems = cartState.cartItems.data;
 				this.total = cartState.cartItems.meta.display_price.with_tax.formatted;
+			},
+			err => {
+			  console.log(err);
 			});
 	}
 

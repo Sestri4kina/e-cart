@@ -13,7 +13,7 @@ export class UtilsModule {
       providers: [
         HandleTokenService,
         ProductUtilsService,
-        CartUtilsService,
+        CartUtilsService
       ]
     };
   }

@@ -35,7 +35,7 @@ export interface ProductWithImage {
     slug: string;
     status: string;
     type: string;
-    imageData: ImageData;
+    imageHref: string;
 }
 
 interface ProductMeta {

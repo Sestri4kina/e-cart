@@ -15,7 +15,7 @@ export class ProductUtilsService {
                 return image.id === imageId
             })
 
-            productWithImage = { ...product, imageData: image };
+            productWithImage = { ...product, imageHref: image.link.href };
 
             productsWithImages.push(productWithImage);
         });

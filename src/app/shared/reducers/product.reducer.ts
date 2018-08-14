@@ -1,8 +1,8 @@
 import { ProductActions, ProductActionTypes } from "@app/shared/actions/product";
-import { Products } from "@app/shared/models/product";
+import { ProductWithImage } from "@app/shared/models/product";
 
 export interface State {
-    products: Products;
+    products: Array<ProductWithImage>;
     isLoading: boolean;
     error: any;
 }
@@ -16,7 +16,7 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: ProductActions): State {
     switch (action.type) { 
-        case ProductActionTypes.Load: {
+        case ProductActionTypes.LoadProducts: {
             return {
               ...state,
               error: null,
@@ -24,7 +24,7 @@ export function reducer(state = initialState, action: ProductActions): State {
             };
         }
 
-        case ProductActionTypes.LoadSuccess: {
+        case ProductActionTypes.LoadProductsSuccess: {
             return {
               ...state,
               products: action.payload.products,
@@ -33,7 +33,7 @@ export function reducer(state = initialState, action: ProductActions): State {
             };
           }
       
-        case ProductActionTypes.LoadFailure: {
+        case ProductActionTypes.LoadProductsFail: {
             return {
                 ...state,
                 error: action.payload,

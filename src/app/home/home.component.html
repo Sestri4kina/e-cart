@@ -9,12 +9,12 @@
     <div class="row justify-content-center marg-v-xs">
         <div class="col-12 col-xl-3 col-lg-4 col-md-4 col-sm-6 marg-v-xs"  *ngFor="let product of products">
             <div class="image-card image-card-container">
-                <img [src]="product.imageData.link.href"
+                <img [src]="product.imageHref"
                     class="product-image">
                 <div class="card-container">
                     <h5>{{ product.name }}</h5>
                     <h5 class="price-info">
-                        {{ product.price[0].currency |currencyFormat }} 
+                        {{ product.price[0].currency | currencyFormat }} 
                         {{ product.price[0].amount | priceFormat  }}
                     </h5>
                     <div class="text-c">

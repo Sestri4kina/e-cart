@@ -44,7 +44,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
         takeUntil(this.unsubscribe$)
       )
       .subscribe(cartState => {
-          console.log(cartState);
+          //console.log(cartState);
           this.cartItems = cartState.cartItems.data;
           this.numberOfProductsInCart = this.cartItems
                                             .reduce((sum: number, item: CartItem) => sum + item.quantity, 0);

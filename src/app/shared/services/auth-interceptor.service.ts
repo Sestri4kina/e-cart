@@ -1,8 +1,9 @@
 import { Injectable, Inject } from "@angular/core";
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
-import { Observable, throwError} from "rxjs";
 
+import { Observable, throwError} from "rxjs";
 import { catchError } from "rxjs/operators";
+
 import { HandleTokenService } from "@app/shared/services/utils/handle-token.service";
 import { AuthAPIService } from "@app/shared/services/remote-api/auth-api.service";
 
@@ -17,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
     ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(req);
+        
         if (this.tokenIsValid() && this.isNotAuthPath(req.url)) {
             req = this.addTokenToHeaders(req);
         } 
@@ -30,9 +31,8 @@ export class AuthInterceptor implements HttpInterceptor {
                     this.authAPIService.getAccessToken()
                         .subscribe(accessToken => {
                             this.handleTokenService.persistToken(accessToken);
-                            //hacky-hacky way
                             this._window.location.reload();
-                        })
+                        }, err => console.log(err))
                 } 
                 // handle other errors 
                 return throwError(err);

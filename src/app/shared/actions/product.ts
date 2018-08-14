@@ -1,29 +1,29 @@
 import { Action } from '@ngrx/store';
-import { Products } from '@app/shared/models/product';
+import { ProductWithImage } from '@app/shared/models/product';
 
 export enum ProductActionTypes {
-  Load = '[Products] Load',
-  LoadSuccess = '[Products] Load Success',
-  LoadFailure = '[Products] Load Failure',
+  LoadProducts = '[Products] Load Products',
+  LoadProductsSuccess = '[Products] Load Products Success',
+  LoadProductsFail = '[Products] Load Products Fail',
 }
 
-export class Load implements Action {
-    readonly type = ProductActionTypes.Load;
+export class LoadProducts implements Action {
+    readonly type = ProductActionTypes.LoadProducts;
   }
   
-  export class LoadSuccess implements Action {
-    readonly type = ProductActionTypes.LoadSuccess;
+  export class LoadProductsSuccess implements Action {
+    readonly type = ProductActionTypes.LoadProductsSuccess;
   
-    constructor(public payload: { products: Products }) {}
+    constructor(public payload: { products: Array<ProductWithImage> }) {}
   }
   
-  export class LoadFailure implements Action {
-    readonly type = ProductActionTypes.LoadFailure;
+  export class LoadProductsFail implements Action {
+    readonly type = ProductActionTypes.LoadProductsFail;
   
     constructor(public payload: any) {}
   }
   
   export type ProductActions =
-    Load
-    | LoadSuccess
-    | LoadFailure;
+    LoadProducts
+    | LoadProductsSuccess
+    | LoadProductsFail;
