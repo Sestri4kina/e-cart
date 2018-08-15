@@ -80,7 +80,6 @@ $font-size: (
     subtitle:  round($typography-core-font-size * map-get($font-size-coefs, 5)),
     body1:     round($typography-core-font-size * map-get($font-size-coefs, 4)),
     body2:     round($typography-core-font-size * map-get($font-size-coefs, 3)),
-    //body2: 16,
     caption1:  round($typography-core-font-size * map-get($font-size-coefs, 2)),
     caption2:  round($typography-core-font-size * map-get($font-size-coefs, 1))
 );

@@ -1,11 +1,10 @@
-<div class="btn btn-group marg-b-xs">
+<div class="btn btn-group marg-v-sm2">
     <button class="btn btn-minus"
         (click)="decrementQuantity()">
     </button>
-    <input class="input input-quantity text-c"
-        type="text" pattern="\d*" maxlength="7"
-        [(ngModel)]="initialQuantity"
-        (keyup)="quantityOnChange()">
+    <div *ngIf="initialQuantity" class="quantity-element"> 
+        {{ initialQuantity }} 
+    </div>
     <button class="btn btn-plus" 
         (click)="incrementQuantity()">
     </button>

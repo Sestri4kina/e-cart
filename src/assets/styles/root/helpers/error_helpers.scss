@@ -1,5 +1,5 @@
-.error {
+.error-message {
     color: map-get($color-theme, error);
+    text-align: left;
     font-size: map-get($font-size, caption1);
-    display: block;
 }

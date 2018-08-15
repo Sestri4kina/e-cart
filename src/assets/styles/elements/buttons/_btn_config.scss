@@ -28,4 +28,6 @@ $lg-btn-font-size: map-get($font-size, subtitle);
 $lg-btn-font-weight: map-get($font-weight, bold);
 $lg-btn-line-height: map-get($line-height, subtitle);
 
-
+$quanity-element-font-size: map-get($font-size, subtitle);
+$quantity-element-line-height: map-get($line-height, subtitle);
+$quantity-element-pad-left-right: map-get($pad-independent, xs);

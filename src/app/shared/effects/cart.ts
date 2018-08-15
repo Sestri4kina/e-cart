@@ -115,7 +115,10 @@ export class CartEffects {
                                 this.cartUtilsService.updateCartRef();
                                 return new UpdateItemSuccess({ items })
                             }),
-                            catchError(error => of(new UpdateItemFail(error)))
+                            catchError(error => {
+                                //console.log(error.error);
+                                return of(new UpdateItemFail(error.error))
+                            })
                         )
             }
         )

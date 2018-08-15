@@ -1,10 +1,12 @@
 import { CartActions, CartActionTypes } from "@app/shared/actions/cart";
-import { CartItems, Cart } from "@app/shared/models/cart";
+import { CartItems, Cart, CartItem } from "@app/shared/models/cart";
 
 
 export interface State {
     cartItems: CartItems;
     cart: Cart;
+    cartTotal: string;
+    numberOfProductsInCart: number;
     isLoading: boolean;
     error: any;
 }
@@ -12,6 +14,8 @@ export interface State {
 const initialState: State = {
     cartItems: null,
     cart: null,
+    cartTotal: null,
+    numberOfProductsInCart: null,
     isLoading: false,
     error: null
 }
@@ -45,29 +49,44 @@ export function reducer(state = initialState, action: CartActions): State {
         }
 
         case CartActionTypes.LoadCartItemsSuccess: {
+            const items = action.payload.items;
+            const total = items.meta.display_price.with_tax.formatted;
+            const numberOfProducts = items.data.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
             return {
               ...state,
-              cartItems: action.payload.items,
+              cartItems: items,
+              cartTotal: total,
+              numberOfProductsInCart: numberOfProducts,
               error: null,
               isLoading: false,
             };
         }
 
         case CartActionTypes.AddItemSuccess: {
+            const items = action.payload.items;
+            const total = items.meta.display_price.with_tax.formatted;
+            const numberOfProducts = items.data.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
             return {
               ...state,
               error: null,
               isLoading: false,
-              cartItems: action.payload.items
+              cartItems: items,
+              cartTotal: total,
+              numberOfProductsInCart: numberOfProducts
             };
         }
 
         case CartActionTypes.RemoveItemSuccess: {
+            const items = action.payload.items;
+            const total = items.meta.display_price.with_tax.formatted;
+            const numberOfProducts = items.data.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
             return {
               ...state,
               error: null,
               isLoading: false,
-              cartItems: action.payload.items
+              cartItems: items,
+              cartTotal: total,
+              numberOfProductsInCart: numberOfProducts
             };
         }
 
@@ -79,16 +98,23 @@ export function reducer(state = initialState, action: CartActions): State {
               ...state,
               error: null,
               isLoading: false,
-              cartItems: updatedCartItems
+              cartItems: updatedCartItems,
+              cartTotal: null,
+              numberOfProductsInCart: null
             };
         }
 
         case CartActionTypes.UpdateItemSuccess: {
+            const items = action.payload.items;
+            const total = items.meta.display_price.with_tax.formatted;
+            const numberOfProducts = items.data.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
             return {
               ...state,
               error: null,
               isLoading: false,
-              cartItems: action.payload.items
+              cartItems: items,
+              cartTotal: total,
+              numberOfProductsInCart: numberOfProducts
             };
         }
       
@@ -115,3 +141,5 @@ export function reducer(state = initialState, action: CartActions): State {
 export const getCart = (state: State) => state.cart;
 export const getCartItems = (state: State) => state.cartItems;
 export const getError = (state: State) => state.error;
+export const getCartTotal = (state: State) => state.cartTotal;
+export const getNumberOfProductsInCart = (state: State) => state.numberOfProductsInCart;

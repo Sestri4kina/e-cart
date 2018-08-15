@@ -1,4 +1,4 @@
-<div class="container" *ngIf="cartItems">
+<div class="container" *ngIf="cartItems$ | async as cartItems">
   <div class="row justify-content-center">
     <div class="col-12 col-xl-8 col-lg-10 col-md-12">
         <h2 class="marg-v-sm2">
@@ -11,40 +11,51 @@
         </div>
 
         <div *ngIf="cartItems.length">
-        <div class="row justify-content-center marg-v-xs card-grey" *ngFor="let item of cartItems">
-            <div class="col-12 col-md-3">
-              <img [src]="item.image.href" class="img img-center" alt="product image">
-            </div>
+          <div class="row justify-content-center marg-v-xs card-grey" *ngFor="let item of cartItems$ | async">
+              <div class="col-12 col-md-3">
+                <img [src]="item.image.href" class="img img-center" alt="product image">
+              </div>
 
-            <div class="col-12 col-md-4">
-              <h4 class="marg-t-xs"> {{ item.name }} </h4>
-              <h5 class="normal"> {{ item.unit_price.currency | currencyFormat}} {{ item.unit_price.amount | priceFormat }} </h5>
-              <button type="button"
-                (click)="removeItem(item.id)"
-                class="btn btn-secondary text-c marg-t-xs">
-                Remove from cart <img [src]="removeIconPath" alt="remove"> 
-              </button>
-            </div>
+              <div class="col-12 col-md-4">
+                <h4 class="marg-t-xs"> {{ item.name }} </h4>
+                <h5 class="normal"> {{ item.unit_price.currency | currencyFormat}} {{ item.unit_price.amount | priceFormat }} </h5>
+                <button type="button"
+                  (click)="removeItem(item.id)"
+                  class="btn btn-secondary text-c marg-t-xs">
+                  Remove from cart <img [src]="removeIconPath" alt="remove"> 
+                </button>
+              </div>
 
-            <div class="col-6 col-md-3">
-                <app-quantity-input [initialQuantity]="item.quantity"
-                  (quantity)="updateQuantity($event, item.id)"></app-quantity-input>
-            </div>
+              <div class="col-6 col-md-3">
+                  <app-quantity-input [initialQuantity]="item.quantity"
+                    (quantity)="updateQuantity($event, item.id)"></app-quantity-input>
+              </div>
 
-            <div class="col-6 col-md-2">
-                <h4 class="normal marg-v-sm2"> {{ item.value.currency | currencyFormat}}{{ item.value.amount | priceFormat }} </h4>
+              <div class="col-6 col-md-2">
+                  <h4 class="normal marg-v-sm2"> {{ item.value.currency | currencyFormat}}{{ item.value.amount | priceFormat }} </h4>
+              </div>
+          </div>
+
+        <!-- ERROR DISPLAYING -->
+        <div class="row justify-content-end marg-v-sm1" *ngIf="error$ | async">
+            <div class="col-12">
+              <div class="error-message"> 
+                Sorry, something went wrong. 
+                {{ error$ | async }} 
+              </div>
             </div>
         </div>
 
+        <!-- TOTAL -->
         <div class="row justify-content-end marg-v-sm1">
             <div class="col-12">
               <div class="float-r">
                   <h4 class="text-upper normal">
-                    Total: {{ total }}
+                    Total: {{ cartTotal$ | async }}
                   </h4>
               </div>
             </div>
-        </div>
+        </div> 
 
         <!-- CONTROL BUTTONS: NOT SMALL SCREENS LAYOUT-->
         <div class="row justify-content-center">

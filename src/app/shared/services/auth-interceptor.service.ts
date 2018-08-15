@@ -25,7 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
         return next.handle(req).pipe( 
             catchError(err => {
-                console.log(err.message);
+                console.log(err);
                 //handle reauth errors
                 if ( err.status === 401 ) {
                     this.authAPIService.getAccessToken()

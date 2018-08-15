@@ -19,12 +19,6 @@
     color: map-get($color-theme, secondary);
 }
 
-
-.c-error {
-    color: map-get($color-theme, error);
-    text-align: center;
-}
-
 //lightest grey
 .c-grey-primary {
     color: map-get($grey, primary);

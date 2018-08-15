@@ -4,9 +4,12 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '@app/shared/reducers';
 import * as cartAction from '@app/shared/actions/cart';
-import { filter, takeUntil } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { CartItem, ItemRequest } from '@app/shared/models/cart';
+import { HandleErrorService } from '@app/shared/services/utils/handle-error.service';
+
 
 @Component({
 	selector: 'app-cart',
@@ -14,42 +17,43 @@ import { CartItem, ItemRequest } from '@app/shared/models/cart';
 })
 export class CartComponent extends BaseComponent implements OnInit {
 
-	cartItems: Array<CartItem>;
+	cartItems$: Observable<Array<CartItem>>;
+	cartTotal$: Observable<string>;
+	error$: Observable<string>;
+
 	removeIconPath: string = "assets/images/icons/remove.svg";
-	total: string;
-
-
+	
 	constructor(
 		private store: Store<fromRoot.State>,
+		private handleError: HandleErrorService
 	) {
 		super();
 	}
 
 	ngOnInit() {
-		this.initCartItems();
+		this.initCart();
+		this.error$ = this.handleError.handleCartErrors();
 	}
 
 	// load cart items
-	initCartItems() {
+	initCart() {
 		this.store.dispatch(new cartAction.LoadCartItems());
 
-		this.store.select(state => state.cart)
-			.pipe(
-				filter(_ => !!_.cartItems),
-				takeUntil(this.unsubscribe$)
-			)
-			.subscribe(cartState => {
-				//console.log(cartState);
-				this.cartItems = cartState.cartItems.data;
-				this.total = cartState.cartItems.meta.display_price.with_tax.formatted;
-			},
-			err => {
-			  console.log(err);
-			});
+		this.cartItems$ = this.store
+								.select(state => state.cart.cartItems)
+								.pipe(
+									filter(_ => !!_),
+									map(_cartItems => _cartItems.data)
+								);
+
+		this.cartTotal$ =  this.store
+								.select(state => state.cart.cartTotal)
+								.pipe(filter(_ => !!_));
 	}
 
 	// update items's quantity in cart
 	updateQuantity(newQuantity: number, itemId: string) {
+		
 		let itemParams: ItemRequest = {
 			quantity: newQuantity,
 			id: itemId,

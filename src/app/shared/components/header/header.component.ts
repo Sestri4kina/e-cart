@@ -5,9 +5,8 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '@app/shared/reducers';
 import * as cartAction from '@app/shared/actions/cart';
-import { filter, takeUntil, flatMap } from 'rxjs/operators';
-
-import { CartItem } from '@app/shared/models/cart';
+import { filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -16,10 +15,9 @@ import { CartItem } from '@app/shared/models/cart';
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
   
+  numberOfProductsInCart$: Observable<number>;
   isSidebarOpen: boolean = false;
   burgerMenuPath = "/assets/images/menu_mob.svg";
-  cartItems: Array<CartItem>;
-  numberOfProductsInCart: number;
 
   constructor(
     private router: Router,
@@ -33,25 +31,10 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   }
 
   getNumberOfProductsInCart() {
-    this.store.select(state => state.auth)
-      .pipe(
-        filter(_ => !!_.hasAccessToken),
-        flatMap(_ => {
-          this.store.dispatch(new cartAction.LoadCartItems());
-          return this.store.select(state => state.cart);
-        }),
-        filter(_ => !!_.cartItems),
-        takeUntil(this.unsubscribe$)
-      )
-      .subscribe(cartState => {
-          //console.log(cartState);
-          this.cartItems = cartState.cartItems.data;
-          this.numberOfProductsInCart = this.cartItems
-                                            .reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
-        },
-        err => {
-          console.log(err);
-        })
+    this.store.dispatch(new cartAction.LoadCartItems());
+
+    this.numberOfProductsInCart$ = this.store.select(state => state.cart.numberOfProductsInCart)
+                                            .pipe(filter(_ => !!_));      
   }
 
   toggleSidebar() {

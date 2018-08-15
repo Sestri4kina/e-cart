@@ -14,8 +14,8 @@
             routerLink="/cart"
             routerLinkActive="active">
            Cart 
-           <span class="cart-badge" *ngIf="cartItems && cartItems.length">
-              {{ numberOfProductsInCart }}
+           <span class="cart-badge" *ngIf="numberOfProductsInCart$ | async">
+              {{ numberOfProductsInCart$ | async }}
            </span>
           </a>
         </nav>
@@ -23,8 +23,8 @@
         <!-- SIDEBAR: SMALL SCREENS -->
         <div class="burger-button" (click)="toggleSidebar()">
           <img [src]="burgerMenuPath" />  
-          <span class="cart-badge" *ngIf="cartItems && cartItems.length">
-              {{ numberOfProductsInCart }}
+          <span class="cart-badge" *ngIf="numberOfProductsInCart$ | async">
+              {{ numberOfProductsInCart$ | async }}
           </span>
         </div>
 
